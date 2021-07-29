@@ -1,1 +1,1 @@
-Version without a 3D model because it is too big for GitHub.
+Version without the 3D model because it is too big for GitHub.
