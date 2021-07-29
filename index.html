@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        loading
+    </div>
+    <!-- Three.js -->
+    <main>
+        <canvas class="webgl"></canvas>
+    </main>
+    <!-- Popups -->
+    <div class="navigationPopup" data-page="aluTubesPage">
+        <h3>Алюминивыевые трубы</h3>
+        <p>Описание</p>
+        <!-- <span class="openPageSpan" data-page="aluTubesPage">Открыть страницу</span> -->
+    </div>
+    <!-- Pages -->
+    <div class="pages-container">
+        <div class="page-unit" id="aluTubesPage">
+            <div class="aluTubesPage-container">
+                Алюминивыевые трубы.<br>
+                <span class="closePageSpan" data-page="aluTubesPage">Закрыть страницу</span>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script type="module" src="js/webCanvas.js"></script>
+    <script type="module" src="js/infoPages.js"></script>
+</body>
+
+</html>
