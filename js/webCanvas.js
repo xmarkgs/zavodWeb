@@ -239,24 +239,144 @@ aluTubesPage.rotation.y = -0.03;
 scene.add(aluTubesPage);
 
 
-// aboutOwnerBox
-let aboutOwnerGeometry = new THREE.BoxGeometry(176, 50, 71);
+// aboutOwnerPage
+let aboutOwnerGeometry = new THREE.BoxGeometry(132, 41, 71);
 let aboutOwnerMaterial = new THREE.MeshPhongMaterial({
     color: "#FFFFFF",
     opacity: 0,
     transparent: true,
 });
-let aboutOwnerBox = new THREE.Mesh(aboutOwnerGeometry, aboutOwnerMaterial);
-aboutOwnerBox.name = "aboutOwnerBox";
-aboutOwnerBox.position.x = 0;
-aboutOwnerBox.position.y = 20;
-aboutOwnerBox.position.z = 0;
-aboutOwnerBox.rotation.y = -0.03;
-gui.add(aboutOwnerBox.position, 'x');
-gui.add(aboutOwnerBox.position, 'y');
-gui.add(aboutOwnerBox.position, 'z');
-gui.add(aboutOwnerBox.rotation, 'y');
-scene.add(aboutOwnerBox);
+let aboutOwnerPage = new THREE.Mesh(aboutOwnerGeometry, aboutOwnerMaterial);
+aboutOwnerPage.name = "aboutOwnerPage";
+aboutOwnerPage.position.x = -132;
+aboutOwnerPage.position.y = 18;
+aboutOwnerPage.position.z = 132;
+aboutOwnerPage.rotation.y = 0.21;
+scene.add(aboutOwnerPage);
+
+// laminateTubesPage
+let laminateTubesGeometry = new THREE.BoxGeometry(143, 50, 95);
+let laminateTubesMaterial = new THREE.MeshPhongMaterial({
+    color: "#FFFFFF",
+    opacity: 0,
+    transparent: true,
+});
+let laminateTubesPage = new THREE.Mesh(laminateTubesGeometry, laminateTubesMaterial);
+laminateTubesPage.name = "laminateTubesPage";
+laminateTubesPage.position.x = -206;
+laminateTubesPage.position.y = 20;
+laminateTubesPage.position.z = 26;
+laminateTubesPage.rotation.y = 0.22;
+scene.add(laminateTubesPage);
+
+// aboutHRPage
+let aboutHRGeometry = new THREE.BoxGeometry(130, 50, 48);
+let aboutHRMaterial = new THREE.MeshPhongMaterial({
+    color: "#FFFFFF",
+    opacity: 0,
+    transparent: true,
+});
+let aboutHRPage = new THREE.Mesh(aboutHRGeometry, aboutHRMaterial);
+aboutHRPage.name = "aboutHRPage";
+aboutHRPage.position.x = -67;
+aboutHRPage.position.y = 15;
+aboutHRPage.position.z = 16;
+aboutHRPage.rotation.y = -0.89;
+scene.add(aboutHRPage);
+
+// featuresPage
+let featuresGeometry = new THREE.BoxGeometry(64, 50, 64);
+let featuresMaterial = new THREE.MeshPhongMaterial({
+    color: "#FFFFFF",
+    opacity: 0,
+    transparent: true,
+});
+let featuresPage = new THREE.Mesh(featuresGeometry, featuresMaterial);
+featuresPage.name = "featuresPage";
+featuresPage.position.x = 51.8;
+featuresPage.position.y = 9;
+featuresPage.position.z = -16;
+featuresPage.rotation.y = 0;
+scene.add(featuresPage);
+
+// rAndDPage
+let rAndDGeometry = new THREE.BoxGeometry(59, 50, 41);
+let rAndDMaterial = new THREE.MeshPhongMaterial({
+    color: "#FFFFFF",
+    opacity: 0,
+    transparent: true,
+});
+let rAndDPage = new THREE.Mesh(rAndDGeometry, rAndDMaterial);
+rAndDPage.name = "rAndDPage";
+rAndDPage.position.x = -150.5;
+rAndDPage.position.y = 11;
+rAndDPage.position.z = -103.2;
+rAndDPage.rotation.y = 0.21;
+scene.add(rAndDPage);
+
+// qualityPage
+let qualityGeometry = new THREE.BoxGeometry(145, 50, 117);
+let qualityMaterial = new THREE.MeshPhongMaterial({
+    color: "#FFFFFF",
+    opacity: 0,
+    transparent: true,
+});
+let qualityPage = new THREE.Mesh(qualityGeometry, qualityMaterial);
+qualityPage.name = "qualityPage";
+qualityPage.position.x = 191;
+qualityPage.position.y = 15;
+qualityPage.position.z = -7.5;
+qualityPage.rotation.y = 0.22;
+scene.add(qualityPage);
+
+// ecologyPage
+let ecologyGeometry = new THREE.BoxGeometry(145, 50, 117);
+let ecologyMaterial = new THREE.MeshPhongMaterial({
+    color: "#FFFFFF",
+    opacity: 0,
+    transparent: true,
+});
+let ecologyPage = new THREE.Mesh(ecologyGeometry, ecologyMaterial);
+ecologyPage.name = "ecologyPage";
+ecologyPage.position.x = 163;
+ecologyPage.position.y = 15;
+ecologyPage.position.z = -142;
+ecologyPage.rotation.y = 0.21;
+scene.add(ecologyPage);
+
+// polyethyleneTubesPage
+let polyethyleneTubesGeometry = new THREE.BoxGeometry(155, 50, 101);
+let polyethyleneTubesMaterial = new THREE.MeshPhongMaterial({
+    color: "#FFFFFF",
+    opacity: 0,
+    transparent: true,
+});
+let polyethyleneTubesPage = new THREE.Mesh(polyethyleneTubesGeometry, polyethyleneTubesMaterial);
+polyethyleneTubesPage.name = "polyethyleneTubesPage";
+polyethyleneTubesPage.position.x = -23;
+polyethyleneTubesPage.position.y = 16;
+polyethyleneTubesPage.position.z = -100;
+polyethyleneTubesPage.rotation.y = 0.2;
+scene.add(polyethyleneTubesPage);
+
+// logisticsPage
+let logisticsGeometry = new THREE.BoxGeometry(275, 50, 215);
+let logisticsMaterial = new THREE.MeshPhongMaterial({
+    color: "#FFFFFF",
+    opacity: 0,
+    transparent: true,
+});
+let logisticsPage = new THREE.Mesh(logisticsGeometry, logisticsMaterial);
+logisticsPage.name = "logisticsPage";
+logisticsPage.position.x = -57;
+logisticsPage.position.y = 15;
+logisticsPage.position.z = -280;
+logisticsPage.rotation.y = 0.2;
+gui.add(logisticsPage.position, 'x'); 
+gui.add(logisticsPage.position, 'y');
+gui.add(logisticsPage.position, 'z');
+gui.add(logisticsPage.rotation, 'y');
+scene.add(logisticsPage);
 
 // Controls
 const controls = new OrbitControls(camera, canvas);
@@ -277,7 +397,7 @@ let currentIntersect = {
     }
 };
 let currentPage = null;
-const objectsToIntersect = [aluTubesPage];
+const objectsToIntersect = [aluTubesPage, aboutOwnerPage, laminateTubesPage, aboutHRPage, featuresPage, rAndDPage, qualityPage, ecologyPage, polyethyleneTubesPage, logisticsPage];
 
 function onMouseMove(event) {
     // calculate mouse position in normalized device coordinates
@@ -371,14 +491,82 @@ const tick = () => {
                         console.log("alu");
                         mouseOverNavigation = true;
                         changingOpacity = false;
-                        changeOpacity(aluTubesPage, 0.3, "up");
+                        // changeOpacity(aluTubesPage, 0.3, "up");
+                        aluTubesPage.material.opacity = 0.3;
                         showNavigationPopup("aluTubesPage");
                         break;
-                    case 'aboutOwnerBox':
+                    case 'aboutOwnerPage':
+                        currentPage = "aboutOwnerPage";
                         console.log("owner");
                         mouseOverNavigation = true;
                         changingOpacity = false;
-                        changeOpacity(aboutOwnerBox, 0.3, "up");
+                        aboutOwnerPage.material.opacity = 0.3;
+                        // changeOpacity(aboutOwnerPage, 0.3, "up");
+                        showNavigationPopup("aboutOwnerPage");
+                        break;
+                    case 'laminateTubesPage':
+                        currentPage = "laminateTubesPage";
+                        mouseOverNavigation = true;
+                        changingOpacity = false;
+                        laminateTubesPage.material.opacity = 0.3;
+                        // changeOpacity(laminateTubesPage, 0.3, "up");
+                        showNavigationPopup("laminateTubesPage");
+                        break;
+                    case 'aboutHRPage':
+                        currentPage = "aboutHRPage";
+                        mouseOverNavigation = true;
+                        changingOpacity = false;
+                        aboutHRPage.material.opacity = 0.3;
+                        // changeOpacity(aboutHRPage, 0.3, "up");
+                        showNavigationPopup("aboutHRPage");
+                        break;
+                    case 'featuresPage':
+                        currentPage = "featuresPage";
+                        mouseOverNavigation = true;
+                        changingOpacity = false;
+                        featuresPage.material.opacity = 0.3;
+                        // changeOpacity(featuresPage, 0.3, "up");
+                        showNavigationPopup("featuresPage");
+                        break;
+                    case 'rAndDPage':
+                        currentPage = "rAndDPage";
+                        mouseOverNavigation = true;
+                        changingOpacity = false;
+                        rAndDPage.material.opacity = 0.3;
+                        // changeOpacity(rAndDPage, 0.3, "up");
+                        showNavigationPopup("rAndDPage");
+                        break;
+                    case 'qualityPage':
+                        currentPage = "qualityPage";
+                        mouseOverNavigation = true;
+                        changingOpacity = false;
+                        qualityPage.material.opacity = 0.3;
+                        // changeOpacity(qualityPage, 0.3, "up");
+                        showNavigationPopup("qualityPage");
+                        break;
+                    case 'ecologyPage':
+                        currentPage = "ecologyPage";
+                        mouseOverNavigation = true;
+                        changingOpacity = false;
+                        ecologyPage.material.opacity = 0.3;
+                        // changeOpacity(ecologyPage, 0.3, "up");
+                        showNavigationPopup("ecologyPage");
+                        break;
+                    case 'polyethyleneTubesPage':
+                        currentPage = "polyethyleneTubesPage";
+                        mouseOverNavigation = true;
+                        changingOpacity = false;
+                        polyethyleneTubesPage.material.opacity = 0.3;
+                        // changeOpacity(polyethyleneTubesPage, 0.3, "up");
+                        showNavigationPopup("polyethyleneTubesPage");
+                        break;
+                    case 'logisticsPage':
+                        currentPage = "logisticsPage";
+                        mouseOverNavigation = true;
+                        changingOpacity = false;
+                        logisticsPage.material.opacity = 0.3;
+                        // changeOpacity(logisticsPage, 0.3, "up");
+                        showNavigationPopup("logisticsPage");
                         break;
                 }
 

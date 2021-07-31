@@ -33,6 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const showNavigationPopup = (page) => {
     for (let popup of document.querySelectorAll(".navigationPopup")) {
+        popup.classList.remove("activePopup");
+    }
+    for (let popup of document.querySelectorAll(".navigationPopup")) {
         if (popup.dataset.page === page) {
             popup.classList.toggle("activePopup");
         }
