@@ -173,7 +173,6 @@ loader.load(
                     }
                 }
             } else if (child.type === "Mesh") {
-                console.log(child);
                 child.castShadow = true;
                 child.receiveShadow = true;
                 child.material.roughness = 0.5;
@@ -372,7 +371,7 @@ logisticsPage.position.x = -57;
 logisticsPage.position.y = 15;
 logisticsPage.position.z = -280;
 logisticsPage.rotation.y = 0.2;
-gui.add(logisticsPage.position, 'x'); 
+gui.add(logisticsPage.position, 'x');
 gui.add(logisticsPage.position, 'y');
 gui.add(logisticsPage.position, 'z');
 gui.add(logisticsPage.rotation, 'y');
@@ -396,39 +395,106 @@ let currentIntersect = {
         name: "empty"
     }
 };
+let canvasBlocked = false;
+let prevMousePos;
+let prevPage = null;
 let currentPage = null;
 const objectsToIntersect = [aluTubesPage, aboutOwnerPage, laminateTubesPage, aboutHRPage, featuresPage, rAndDPage, qualityPage, ecologyPage, polyethyleneTubesPage, logisticsPage];
 
 function onMouseMove(event) {
     // calculate mouse position in normalized device coordinates
     // (-1 to +1) for both components
+    prevPage = null;
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     // console.log(currentIntersects);
 }
 
+// setInterval(() => {
+//     if(!mouseMoved && mouseStartedMoving) {
+//         console.log(pageClickable);
+//         pageClickable = true;
+//         mouseStartedMoving = false;
+//     }
+//     mouseMoved = false;
+// }, 1);
+
 function onMouseClick(event) {
-    if (currentPage !== null) {
-        document.body.classList.remove("navigation-hover");
-        mouse.x = -10000;
-        mouse.y = -10000;
-        currentIntersect = {
-            object: {
-                name: "empty"
+    // if (currentIntersect.object !== undefined) {
+    //     ++intersectClick;
+    //     if (intersectClick === 1) {
+    //         prevIntersect = currentIntersect.object;
+    //     } else if (intersectClick === 2) {
+    //         if (prevIntersect === currentIntersect.object) {
+    //             intersectClick = 0;
+    //             if (currentPage !== null) {
+    //                 document.body.classList.remove("navigation-hover");
+    //                 mouse.x = -10000;
+    //                 mouse.y = -10000;
+    //                 currentIntersect = {
+    //                     object: {
+    //                         name: "empty"
+    //                     }
+    //                 };
+    //                 document.querySelector(`#${currentPage}`).classList.toggle("activePage");
+    //                 document.querySelector(`#${currentPage}`).addEventListener('mouseenter', () => {
+    //                     mouse.x = -10000;
+    //                     mouse.y = -10000;
+    //                 });
+    //                 for (let popup of document.querySelectorAll(".navigationPopup")) {
+    //                     popup.classList.remove("activePopup");
+    //                 }
+    //             }
+    //         } else {
+    //             intersectClick = 0;
+    //             prevIntersect = null;
+    //         }
+    //     }
+    // } else {
+    //     intersectClick = 0;
+    //     prevIntersect = null;
+    // }
+
+    console.log(currentPage, prevPage);
+    console.log(prevMousePos, camera.position.x);
+    if (currentPage !== null && prevPage === currentPage) {
+        let diff = prevMousePos - camera.position.x;
+        if (diff < 0) {
+            diff = -diff;
+        }
+        if (diff < 10) {
+            document.body.classList.remove("navigation-hover");
+            mouse.x = -10000;
+            mouse.y = -10000;
+            currentIntersect = {
+                object: {
+                    name: "empty"
+                }
+            };
+            document.querySelector(`#${currentPage}`).classList.toggle("activePage");
+            document.querySelector(`#${currentPage}`).addEventListener('mouseenter', () => {
+                mouse.x = -10000;
+                mouse.y = -10000;
+            });
+            for (let popup of document.querySelectorAll(".navigationPopup")) {
+                popup.classList.remove("activePopup");
             }
-        };
-        document.querySelector(`#${currentPage}`).classList.toggle("activePage");
-        for (let popup of document.querySelectorAll(".navigationPopup")) {
-            popup.classList.remove("activePopup");
+            prevPage = null;
         }
     }
 
-    console.log(currentIntersect);
-    console.log(model.children);
+}
+
+function onMouseDown() {
+    prevPage = currentPage;
+    prevMousePos = camera.position.x;
+    console.log(prevMousePos);
 }
 
 window.addEventListener('mousemove', onMouseMove, false);
+window.addEventListener('pointerdown', onMouseDown, false);
 window.addEventListener('click', onMouseClick, false);
+
 
 // Animation
 const clock = new THREE.Clock();
@@ -473,132 +539,129 @@ const tick = () => {
 
     // Cast a ray from the mouse and handle events
     if (model !== undefined) {
-        raycaster.setFromCamera(mouse, camera);
+        if (canvasBlocked === false) {
+            raycaster.setFromCamera(mouse, camera);
 
-        const intersects = raycaster.intersectObjects(objectsToIntersect);
-        // console.log(intersects);
+            const intersects = raycaster.intersectObjects(objectsToIntersect);
+            // console.log(intersects);
 
-        if (intersects.length !== 0) {
-            if (currentIntersect.object.name !== intersects[0].object.name) {
-                console.log("new");
-                currentIntersect = intersects[0];
+            if (intersects.length !== 0) {
+                if (currentIntersect.object.name !== intersects[0].object.name) {
+                    currentIntersect = intersects[0];
 
-                document.body.classList.add("navigation-hover");
-
-                switch (currentIntersect.object.name) {
-                    case 'aluTubesPage':
-                        currentPage = "aluTubesPage";
-                        console.log("alu");
-                        mouseOverNavigation = true;
-                        changingOpacity = false;
-                        // changeOpacity(aluTubesPage, 0.3, "up");
-                        aluTubesPage.material.opacity = 0.3;
-                        showNavigationPopup("aluTubesPage");
-                        break;
-                    case 'aboutOwnerPage':
-                        currentPage = "aboutOwnerPage";
-                        console.log("owner");
-                        mouseOverNavigation = true;
-                        changingOpacity = false;
-                        aboutOwnerPage.material.opacity = 0.3;
-                        // changeOpacity(aboutOwnerPage, 0.3, "up");
-                        showNavigationPopup("aboutOwnerPage");
-                        break;
-                    case 'laminateTubesPage':
-                        currentPage = "laminateTubesPage";
-                        mouseOverNavigation = true;
-                        changingOpacity = false;
-                        laminateTubesPage.material.opacity = 0.3;
-                        // changeOpacity(laminateTubesPage, 0.3, "up");
-                        showNavigationPopup("laminateTubesPage");
-                        break;
-                    case 'aboutHRPage':
-                        currentPage = "aboutHRPage";
-                        mouseOverNavigation = true;
-                        changingOpacity = false;
-                        aboutHRPage.material.opacity = 0.3;
-                        // changeOpacity(aboutHRPage, 0.3, "up");
-                        showNavigationPopup("aboutHRPage");
-                        break;
-                    case 'featuresPage':
-                        currentPage = "featuresPage";
-                        mouseOverNavigation = true;
-                        changingOpacity = false;
-                        featuresPage.material.opacity = 0.3;
-                        // changeOpacity(featuresPage, 0.3, "up");
-                        showNavigationPopup("featuresPage");
-                        break;
-                    case 'rAndDPage':
-                        currentPage = "rAndDPage";
-                        mouseOverNavigation = true;
-                        changingOpacity = false;
-                        rAndDPage.material.opacity = 0.3;
-                        // changeOpacity(rAndDPage, 0.3, "up");
-                        showNavigationPopup("rAndDPage");
-                        break;
-                    case 'qualityPage':
-                        currentPage = "qualityPage";
-                        mouseOverNavigation = true;
-                        changingOpacity = false;
-                        qualityPage.material.opacity = 0.3;
-                        // changeOpacity(qualityPage, 0.3, "up");
-                        showNavigationPopup("qualityPage");
-                        break;
-                    case 'ecologyPage':
-                        currentPage = "ecologyPage";
-                        mouseOverNavigation = true;
-                        changingOpacity = false;
-                        ecologyPage.material.opacity = 0.3;
-                        // changeOpacity(ecologyPage, 0.3, "up");
-                        showNavigationPopup("ecologyPage");
-                        break;
-                    case 'polyethyleneTubesPage':
-                        currentPage = "polyethyleneTubesPage";
-                        mouseOverNavigation = true;
-                        changingOpacity = false;
-                        polyethyleneTubesPage.material.opacity = 0.3;
-                        // changeOpacity(polyethyleneTubesPage, 0.3, "up");
-                        showNavigationPopup("polyethyleneTubesPage");
-                        break;
-                    case 'logisticsPage':
-                        currentPage = "logisticsPage";
-                        mouseOverNavigation = true;
-                        changingOpacity = false;
-                        logisticsPage.material.opacity = 0.3;
-                        // changeOpacity(logisticsPage, 0.3, "up");
-                        showNavigationPopup("logisticsPage");
-                        break;
-                }
-
-            } else if (currentIntersect.object.name === intersects[0].object.name) {
-                mouseOverNavigation = true;
-                console.log("still");
-                for (let object of objectsToIntersect) {
-                    if (object.name !== currentIntersect.object.name) {
-                        object.material.opacity = 0;
+                    document.body.classList.add("navigation-hover");
+                    switch (currentIntersect.object.name) {
+                        case 'aluTubesPage':
+                            currentPage = "aluTubesPage";
+                            mouseOverNavigation = true;
+                            changingOpacity = false;
+                            // changeOpacity(aluTubesPage, 0.3, "up");
+                            aluTubesPage.material.opacity = 0.3;
+                            showNavigationPopup("aluTubesPage");
+                            break;
+                        case 'aboutOwnerPage':
+                            currentPage = "aboutOwnerPage";
+                            mouseOverNavigation = true;
+                            changingOpacity = false;
+                            aboutOwnerPage.material.opacity = 0.3;
+                            // changeOpacity(aboutOwnerPage, 0.3, "up");
+                            showNavigationPopup("aboutOwnerPage");
+                            break;
+                        case 'laminateTubesPage':
+                            currentPage = "laminateTubesPage";
+                            mouseOverNavigation = true;
+                            changingOpacity = false;
+                            laminateTubesPage.material.opacity = 0.3;
+                            // changeOpacity(laminateTubesPage, 0.3, "up");
+                            showNavigationPopup("laminateTubesPage");
+                            break;
+                        case 'aboutHRPage':
+                            currentPage = "aboutHRPage";
+                            mouseOverNavigation = true;
+                            changingOpacity = false;
+                            aboutHRPage.material.opacity = 0.3;
+                            // changeOpacity(aboutHRPage, 0.3, "up");
+                            showNavigationPopup("aboutHRPage");
+                            break;
+                        case 'featuresPage':
+                            currentPage = "featuresPage";
+                            mouseOverNavigation = true;
+                            changingOpacity = false;
+                            featuresPage.material.opacity = 0.3;
+                            // changeOpacity(featuresPage, 0.3, "up");
+                            showNavigationPopup("featuresPage");
+                            break;
+                        case 'rAndDPage':
+                            currentPage = "rAndDPage";
+                            mouseOverNavigation = true;
+                            changingOpacity = false;
+                            rAndDPage.material.opacity = 0.3;
+                            // changeOpacity(rAndDPage, 0.3, "up");
+                            showNavigationPopup("rAndDPage");
+                            break;
+                        case 'qualityPage':
+                            currentPage = "qualityPage";
+                            mouseOverNavigation = true;
+                            changingOpacity = false;
+                            qualityPage.material.opacity = 0.3;
+                            // changeOpacity(qualityPage, 0.3, "up");
+                            showNavigationPopup("qualityPage");
+                            break;
+                        case 'ecologyPage':
+                            currentPage = "ecologyPage";
+                            mouseOverNavigation = true;
+                            changingOpacity = false;
+                            ecologyPage.material.opacity = 0.3;
+                            // changeOpacity(ecologyPage, 0.3, "up");
+                            showNavigationPopup("ecologyPage");
+                            break;
+                        case 'polyethyleneTubesPage':
+                            currentPage = "polyethyleneTubesPage";
+                            mouseOverNavigation = true;
+                            changingOpacity = false;
+                            polyethyleneTubesPage.material.opacity = 0.3;
+                            // changeOpacity(polyethyleneTubesPage, 0.3, "up");
+                            showNavigationPopup("polyethyleneTubesPage");
+                            break;
+                        case 'logisticsPage':
+                            currentPage = "logisticsPage";
+                            mouseOverNavigation = true;
+                            changingOpacity = false;
+                            logisticsPage.material.opacity = 0.3;
+                            // changeOpacity(logisticsPage, 0.3, "up");
+                            showNavigationPopup("logisticsPage");
+                            break;
+                    }
+                } else if (currentIntersect.object.name === intersects[0].object.name) {
+                    mouseOverNavigation = true;
+                    for (let object of objectsToIntersect) {
+                        if (object.name !== currentIntersect.object.name) {
+                            object.material.opacity = 0;
+                        }
                     }
                 }
-            }
-        } else {
-            console.log("clearing");
-            document.body.classList.remove("navigation-hover");
-            mouseOverNavigation = false;
-            for (let object of objectsToIntersect) {
-                if (object.material.opacity > 0) {
-                    changingOpacity = false;
-                    changeOpacity(object, 0, "down");
+            } else {
+                document.body.classList.remove("navigation-hover");
+                mouseOverNavigation = false;
+                for (let object of objectsToIntersect) {
+                    if (object.material.opacity > 0) {
+                        changingOpacity = false;
+                        changeOpacity(object, 0, "down");
+                    }
                 }
-            }
-            currentPage = null;
-            currentIntersect = {
-                object: {
-                    name: "empty"
+                currentPage = null;
+                currentIntersect = {
+                    object: {
+                        name: "empty"
+                    }
+                };
+                for (let popup of document.querySelectorAll(".navigationPopup")) {
+                    popup.classList.remove("activePopup");
                 }
-            };
-            for (let popup of document.querySelectorAll(".navigationPopup")) {
-                popup.classList.remove("activePopup");
             }
         }
+
+
 
 
 
