@@ -18,7 +18,7 @@ import showNavigationPopup from './infoPages.js';
 
 
 // GUI
-const gui = new GUI();
+// const gui = new GUI();
 
 // Loading manager
 const manager = new THREE.LoadingManager();
@@ -30,10 +30,12 @@ manager.onStart = function (url, itemsLoaded, itemsTotal) {
 manager.onLoad = function () {
     console.log('Loading complete!');
     document.getElementsByClassName('preloader')[0].classList.toggle("loading");
+    document.querySelector('.animation-container').classList.add('animated');
+    blockCanvas();
 };
 
 manager.onProgress = function (url, itemsLoaded, itemsTotal) {
-    let percentage = Math.round((itemsLoaded/itemsTotal)*100);
+    let percentage = Math.round((itemsLoaded / itemsTotal) * 100);
     console.log(percentage);
     let loaderActive = document.querySelector('.progress-loader-active');
     let loaderIndicator = document.querySelector('.progress-loader-indicator');
@@ -44,7 +46,7 @@ manager.onProgress = function (url, itemsLoaded, itemsTotal) {
     } else {
         loaderStatus.innerHTML = "loading assets...";
     }
-    
+
     loaderActive.style.width = `${percentage}%`;
     loaderIndicator.innerHTML = `${percentage}%`;
 
@@ -386,10 +388,10 @@ logisticsPage.position.x = -57;
 logisticsPage.position.y = 15;
 logisticsPage.position.z = -280;
 logisticsPage.rotation.y = 0.2;
-gui.add(logisticsPage.position, 'x');
-gui.add(logisticsPage.position, 'y');
-gui.add(logisticsPage.position, 'z');
-gui.add(logisticsPage.rotation, 'y');
+// gui.add(logisticsPage.position, 'x');
+// gui.add(logisticsPage.position, 'y');
+// gui.add(logisticsPage.position, 'z');
+// gui.add(logisticsPage.rotation, 'y');
 scene.add(logisticsPage);
 
 // Controls
@@ -414,6 +416,7 @@ let canvasBlocked = false;
 let prevMousePos;
 let prevPage = null;
 let currentPage = null;
+let popup = {};
 const objectsToIntersect = [aluTubesPage, aboutOwnerPage, laminateTubesPage, aboutHRPage, featuresPage, rAndDPage, qualityPage, ecologyPage, polyethyleneTubesPage, logisticsPage];
 
 function onMouseMove(event) {
@@ -422,6 +425,8 @@ function onMouseMove(event) {
     prevPage = null;
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    popup.x = event.clientX;
+    popup.y = window.innerHeight - event.clientY;
     // console.log(currentIntersects);
 }
 
@@ -470,14 +475,15 @@ function onMouseClick(event) {
     //     prevIntersect = null;
     // }
 
-    console.log(currentPage, prevPage);
-    console.log(prevMousePos, camera.position.x);
+    // console.log(currentPage, prevPage);
+    // console.log(prevMousePos, camera.position.x);
     if (currentPage !== null && prevPage === currentPage) {
         let diff = prevMousePos - camera.position.x;
         if (diff < 0) {
             diff = -diff;
         }
         if (diff < 10) {
+            canvasBlocked = true;
             document.body.classList.remove("navigation-hover");
             mouse.x = -10000;
             mouse.y = -10000;
@@ -503,13 +509,21 @@ function onMouseClick(event) {
 function onMouseDown() {
     prevPage = currentPage;
     prevMousePos = camera.position.x;
-    console.log(prevMousePos);
+    // console.log(prevMousePos);
 }
 
 window.addEventListener('mousemove', onMouseMove, false);
 window.addEventListener('pointerdown', onMouseDown, false);
 window.addEventListener('click', onMouseClick, false);
 
+
+export function blockCanvas() {
+    canvasBlocked = true;
+}
+
+export function openCanvas() {
+    canvasBlocked = false;
+}
 
 // Animation
 const clock = new THREE.Clock();
@@ -554,12 +568,13 @@ const tick = () => {
 
     // Cast a ray from the mouse and handle events
     if (model !== undefined) {
+        raycaster.setFromCamera(mouse, camera);
+
+        const intersects = raycaster.intersectObjects(objectsToIntersect);
+        // console.log(intersects);
+
+
         if (canvasBlocked === false) {
-            raycaster.setFromCamera(mouse, camera);
-
-            const intersects = raycaster.intersectObjects(objectsToIntersect);
-            // console.log(intersects);
-
             if (intersects.length !== 0) {
                 if (currentIntersect.object.name !== intersects[0].object.name) {
                     currentIntersect = intersects[0];
@@ -572,7 +587,7 @@ const tick = () => {
                             changingOpacity = false;
                             // changeOpacity(aluTubesPage, 0.3, "up");
                             aluTubesPage.material.opacity = 0.3;
-                            showNavigationPopup("aluTubesPage");
+                            showNavigationPopup("aluTubesPage", popup.x, popup.y);
                             break;
                         case 'aboutOwnerPage':
                             currentPage = "aboutOwnerPage";
@@ -580,7 +595,7 @@ const tick = () => {
                             changingOpacity = false;
                             aboutOwnerPage.material.opacity = 0.3;
                             // changeOpacity(aboutOwnerPage, 0.3, "up");
-                            showNavigationPopup("aboutOwnerPage");
+                            showNavigationPopup("aboutOwnerPage", popup.x, popup.y);
                             break;
                         case 'laminateTubesPage':
                             currentPage = "laminateTubesPage";
@@ -588,7 +603,7 @@ const tick = () => {
                             changingOpacity = false;
                             laminateTubesPage.material.opacity = 0.3;
                             // changeOpacity(laminateTubesPage, 0.3, "up");
-                            showNavigationPopup("laminateTubesPage");
+                            showNavigationPopup("laminateTubesPage", popup.x, popup.y);
                             break;
                         case 'aboutHRPage':
                             currentPage = "aboutHRPage";
@@ -596,7 +611,7 @@ const tick = () => {
                             changingOpacity = false;
                             aboutHRPage.material.opacity = 0.3;
                             // changeOpacity(aboutHRPage, 0.3, "up");
-                            showNavigationPopup("aboutHRPage");
+                            showNavigationPopup("aboutHRPage", popup.x, popup.y);
                             break;
                         case 'featuresPage':
                             currentPage = "featuresPage";
@@ -604,7 +619,7 @@ const tick = () => {
                             changingOpacity = false;
                             featuresPage.material.opacity = 0.3;
                             // changeOpacity(featuresPage, 0.3, "up");
-                            showNavigationPopup("featuresPage");
+                            showNavigationPopup("featuresPage", popup.x, popup.y);
                             break;
                         case 'rAndDPage':
                             currentPage = "rAndDPage";
@@ -612,7 +627,7 @@ const tick = () => {
                             changingOpacity = false;
                             rAndDPage.material.opacity = 0.3;
                             // changeOpacity(rAndDPage, 0.3, "up");
-                            showNavigationPopup("rAndDPage");
+                            showNavigationPopup("rAndDPage", popup.x, popup.y);
                             break;
                         case 'qualityPage':
                             currentPage = "qualityPage";
@@ -620,7 +635,7 @@ const tick = () => {
                             changingOpacity = false;
                             qualityPage.material.opacity = 0.3;
                             // changeOpacity(qualityPage, 0.3, "up");
-                            showNavigationPopup("qualityPage");
+                            showNavigationPopup("qualityPage", popup.x, popup.y);
                             break;
                         case 'ecologyPage':
                             currentPage = "ecologyPage";
@@ -628,7 +643,7 @@ const tick = () => {
                             changingOpacity = false;
                             ecologyPage.material.opacity = 0.3;
                             // changeOpacity(ecologyPage, 0.3, "up");
-                            showNavigationPopup("ecologyPage");
+                            showNavigationPopup("ecologyPage", popup.x, popup.y);
                             break;
                         case 'polyethyleneTubesPage':
                             currentPage = "polyethyleneTubesPage";
@@ -636,7 +651,7 @@ const tick = () => {
                             changingOpacity = false;
                             polyethyleneTubesPage.material.opacity = 0.3;
                             // changeOpacity(polyethyleneTubesPage, 0.3, "up");
-                            showNavigationPopup("polyethyleneTubesPage");
+                            showNavigationPopup("polyethyleneTubesPage", popup.x, popup.y);
                             break;
                         case 'logisticsPage':
                             currentPage = "logisticsPage";
@@ -644,7 +659,7 @@ const tick = () => {
                             changingOpacity = false;
                             logisticsPage.material.opacity = 0.3;
                             // changeOpacity(logisticsPage, 0.3, "up");
-                            showNavigationPopup("logisticsPage");
+                            showNavigationPopup("logisticsPage", popup.x, popup.y);
                             break;
                     }
                 } else if (currentIntersect.object.name === intersects[0].object.name) {
@@ -672,9 +687,30 @@ const tick = () => {
                 };
                 for (let popup of document.querySelectorAll(".navigationPopup")) {
                     popup.classList.remove("activePopup");
+                    popup.style.bottom = "-100px";
                 }
             }
+        } else {
+            document.body.classList.remove("navigation-hover");
+            mouseOverNavigation = false;
+            for (let object of objectsToIntersect) {
+                if (object.material.opacity > 0) {
+                    changingOpacity = false;
+                    changeOpacity(object, 0, "down");
+                }
+            }
+            currentPage = null;
+            currentIntersect = {
+                object: {
+                    name: "empty"
+                }
+            };
+            for (let popup of document.querySelectorAll(".navigationPopup")) {
+                popup.classList.remove("activePopup");
+                popup.style.bottom = "-100px";
+            }
         }
+
 
 
 

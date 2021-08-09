@@ -28,60 +28,121 @@
         <div class="progress-loader-status"></div>
     </div>
 
+    <!-- Animation -->
+    <div class="animation-container">
+        <h1>Тубный завод</h1>
+        <div class="animation-hint" id="animation-hint-1">
+            <img src="img/pointers/scroll_pointer.svg" alt="">
+            <p>скроль, чтобы приблизить</p>
+        </div>
+        <div class="animation-hint" id="animation-hint-2">
+            <img src="img/pointers/finger_pointer.svg" alt="">
+            <p>удерживай, чтобы вращать</p>
+        </div>
+    </div>
+
+    <!-- Menu -->
+    <div class="menu-container">
+        <div class="menu-header">
+            <div class="header__logo">
+                <img src="img/logo.svg" alt="">
+                <p>тубный завод</p>
+            </div>
+            <div class="menu-close">
+                <img src="img/icons/close.svg" alt="">
+            </div>
+        </div>
+        <div class="menu-points">
+            <div class="menu-point active openPageMain">главная</div>
+            <div class="menu-point openPageElement" data-page="">продукция</div>
+            <div class="menu-point openPageElement" data-page="aboutOwnerPage">кабинет директора</div>
+            <div class="menu-point openPageElement" data-page="aboutHRPage">про персонал</div>
+            <div class="menu-point openPageElement" data-page="rAndDPage">r&d</div>
+            <div class="menu-point openPageElement" data-page="logisticsPage">логистика</div>
+            <div class="menu-point openPageElement" data-page="ecologyPage">экология</div>
+            <div class="menu-point openPageElement" data-page="">наши преимущества</div>
+            <div class="menu-point openPageElement" data-page="contactPage">контакты</div>
+        </div>
+    </div>
+
     <!-- Three.js -->
     <main>
+        <header>
+            <div class="header__logo">
+                <img src="img/logo.svg" alt="">
+                <p>тубный завод</p>
+            </div>
+            <div class="header__navigation">
+                <div class="language-switcher">
+                    <p>EN</p>
+                    <img src="img/arrows/bottom_arrow_small.svg" alt="">
+                </div>
+                <div class="menu-btn">
+                    <p>меню</p>
+                    <div class="menu-icon">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </header>
         <canvas class="webgl"></canvas>
+        <div class="contact-btn openPageElement" data-page="contactPage">
+            <img src="img/icons/info.svg" alt="">
+            <p>контакты</p>
+        </div>
     </main>
 
     <!-- Popups -->
     <div class="navigationPopup" data-page="aluTubesPage">
-        <h3>Алюминивыевые трубы</h3>
-        <p>Описание</p>
+        <h3>Алюминивыевые тубы</h3>
+        <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="aluTubesPage">Открыть страницу</span> -->
     </div>
     <div class="navigationPopup" data-page="aboutOwnerPage">
         <h3>О владельце</h3>
-        <p>Описание</p>
+        <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="aboutOwnerPage">Открыть страницу</span> -->
     </div>
     <div class="navigationPopup" data-page="laminateTubesPage">
         <h3>Ламинатные трубы</h3>
-        <p>Описание</p>
+        <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="laminateTubesPage">Открыть страницу</span> -->
     </div>
     <div class="navigationPopup" data-page="aboutHRPage">
         <h3>Про персонал</h3>
-        <p>Описание</p>
+        <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="aboutHRPage">Открыть страницу</span> -->
     </div>
     <div class="navigationPopup" data-page="featuresPage">
         <h3>Фишки</h3>
-        <p>Описание</p>
+        <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="featuresPage">Открыть страницу</span> -->
     </div>
     <div class="navigationPopup" data-page="rAndDPage">
         <h3>R&D</h3>
-        <p>Описание</p>
+        <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="rAndDPage">Открыть страницу</span> -->
     </div>
     <div class="navigationPopup" data-page="qualityPage">
         <h3>Отдел качества</h3>
-        <p>Описание</p>
+        <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="qualityPage">Открыть страницу</span> -->
     </div>
     <div class="navigationPopup" data-page="ecologyPage">
         <h3>Екология</h3>
-        <p>Описание</p>
+        <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="ecologyPage">Открыть страницу</span> -->
     </div>
     <div class="navigationPopup" data-page="polyethyleneTubesPage">
         <h3>Полиетиленовые трубы</h3>
-        <p>Описание</p>
+        <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="polyethyleneTubesPage">Открыть страницу</span> -->
     </div>
     <div class="navigationPopup" data-page="logisticsPage">
         <h3>Логистика</h3>
-        <p>Описание</p>
+        <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="logisticsPage">Открыть страницу</span> -->
     </div>
     <!-- Pages -->
@@ -144,6 +205,12 @@
             <div class="aluTubesPage-container">
                 Логистика<br>
                 <span class="closePageSpan" data-page="logisticsPage">Закрыть страницу</span>
+            </div>
+        </div>
+        <div class="page-unit" id="contactPage">
+            <div class="aluTubesPage-container">
+                Контакты<br>
+                <span class="closePageSpan" data-page="contactPage">Закрыть страницу</span>
             </div>
         </div>
     </div>

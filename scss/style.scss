@@ -1,3 +1,5 @@
+$text-black: #111111;
+
 // Montserrat Font
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -17,15 +19,208 @@ body {
 }
 
 main {
+    position: relative;
     overflow: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Montserrat', sans-serif;
 }
 
-.dg.ac {
-    z-index: 101 !important;
+// Header
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px 50px;
+    background: transparent;
+
+    &.on-page {
+        transition: .5s;
+        background: white;
+    }
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 50px;
+        height: 50px;
+    }
+
+    p {
+        margin-left: 26px;
+        font-size: 20px;
+        color: $text-black;
+        text-transform: uppercase;
+    }
+}
+
+.header__navigation {
+    display: flex;
+    align-items: center;
+}
+
+.language-switcher {
+    margin-right: 46px;
+    display: flex;
+    align-items: center;
+
+    p {
+        margin-right: 14px;
+        font-weight: bold;
+        font-size: 14px;
+        color: $text-black;
+    }
+}
+
+.menu-btn {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background: $text-black;
+    transition: .1s;
+
+    &:hover {
+        cursor: pointer;
+        background: #427c36;
+    }
+
+    p {
+        font-weight: bold;
+        font-size: 14px;
+        color: white;
+        margin-right: 15px;
+        text-transform: uppercase;
+        user-select: none;
+    }
+}
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 24px;
+
+    div {
+        background: white;
+    }
+
+    div:nth-child(1) {
+        width: 30px;
+        height: 1px;
+    }
+
+    div:nth-child(2) {
+        width: 100%;
+        height: 2px;
+    }
+
+    div:nth-child(3) {
+        width: 50%;
+        height: 1px;
+    }
+}
+
+.menu-container {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background: white;
+    z-index: 9;
+    transition: .5s;
+
+    &.active {
+        top: 0;
+    }
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px 50px;
+}
+
+.menu-points {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 21px;
+    padding: 0 50px;
+}
+
+.menu-point {
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+
+    &:hover {
+        transition: .1s;
+        font-weight: bold;
+    }
+
+    &.active {
+        font-weight: bold;
+    }
+
+    &:not(:nth-child(1)) {
+        margin-top: 40px;
+    }
+}
+
+.menu-close {
+    cursor: pointer;
+}
+
+// Contact btn
+.contact-btn {
+    position: absolute;
+    right: 50px;
+    bottom: 30px;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background: white;
+    cursor: pointer;
+    transition: .1s;
+
+    &:hover {
+        background: $text-black;
+
+        p {
+            color: white;
+        }
+
+        img {
+            filter: invert(1);
+        }
+    }
+
+    p {
+        margin-left: 10px;
+        font-weight: bold;
+        font-size: 14px;
+        color: $text-black;
+        text-transform: uppercase;
+        user-select: none;
+    }
 }
 
 // Three.js
@@ -55,7 +250,7 @@ h1, h2, h3, h4, h5, h6 {
         margin-top: 54px;
         font-size: 50px;
         text-align: center;
-        color: #111111;
+        color: $text-black;
     }
 }
 
@@ -70,7 +265,7 @@ h1, h2, h3, h4, h5, h6 {
 .progress-loader-active {
     width: 25%;
     height: 5px;
-    background: #111111;
+    background: $text-black;
     border-radius: 1000px;
 }
 
@@ -86,21 +281,108 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
+// Animation
+.animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.15) 14.61%, rgba(0, 0, 0, 0.15) 82.79%, rgba(0, 0, 0, 0.3) 100%);
+    color: white;
+
+    h1 {
+        opacity: 0;
+        font-weight: 900;
+        font-size: 150px;
+    }
+
+    &.animated {
+        h1 {
+            animation: animation-container;
+            animation-duration: 2s;
+        }
+
+        #animation-hint-1 {
+            animation: animation-container;
+            animation-fill-mode: forwards;
+            animation-duration: 5s;
+            animation-delay: 2s;
+        }
+
+        #animation-hint-2 {
+            animation: animation-container;
+            animation-fill-mode: forwards;
+            animation-duration: 5s;
+            animation-delay: 5s;
+        }
+    }
+
+    &.transparent {
+        transition: 1s;
+        opacity: 0;
+    }
+
+    &.animation-end {
+        top: -10000px;
+    }
+}
+
+.animation-hint {
+    opacity: 0;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+
+    p {
+        margin-left: 20px;
+        font-weight: bold;
+        font-size: 20px;
+        text-transform: uppercase;
+    }
+}
+
+@keyframes animation-container {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 // Navigation popus
 .navigationPopup {
-    margin: 0 auto;
+    // margin: 0 auto;
     position: absolute;
     bottom: -100px;
     left: 0;
-    right: 0;
+    // right: 0;
+    display: flex;
     width: fit-content;
     height: fit-content;
-    padding: 24px 48px;
-    border-radius: 40px;
+    padding: 23px 30px;
+    border-bottom: solid 4px $text-black;
     background: white;
     z-index: 5;
-    cursor: default;
-    transition: .2s;
+    cursor: pointer;
+    opacity: 0;
+    transition: 1s opacity;
+
+    h3 {
+        font-size: 30px;
+        margin-right: 20px;
+    }
 
     span {
         margin-top: 12px;
@@ -109,7 +391,19 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     &.activePopup {
+        opacity: 1;
         bottom: 48px;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: -62px;
+        left: -20%;
+        width: 120%;
+        height: 62px;
+        background-image: url('../img/popup_vector.svg');
+        background-repeat: no-repeat;
     }
 }
 
@@ -148,7 +442,7 @@ h1, h2, h3, h4, h5, h6 {
     background: white;
     font-size: 32px;
     font-weight: 600;
-    color: rgb(32,33,36);
+    color: rgb(32, 33, 36);
 
     span {
         margin-top: 12px;
