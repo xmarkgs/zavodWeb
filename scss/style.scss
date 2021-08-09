@@ -1,12 +1,15 @@
-// Exo 2 Web Font --- font-family: 'Exo 2', sans-serif;
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+// Montserrat Font
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+// Roboto font
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 // General
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -15,6 +18,10 @@ body {
 
 main {
     overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
 }
 
 .dg.ac {
@@ -31,18 +38,52 @@ main {
     position: absolute;
     top: -100%;
     left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
-    font-size: 72px;
-    color: black;
-    display: grid;
-    place-items: center;
-    background: chartreuse;
+    background: white;
     z-index: 100;
 
     &.loading {
         top: 0;
     }
+
+    h1 {
+        margin-top: 54px;
+        font-size: 50px;
+        text-align: center;
+        color: #111111;
+    }
+}
+
+.progress-loader-body {
+    margin-top: 65px;
+    width: 1140px;
+    height: 5px;
+    background: #F5F5F5;
+    border-radius: 1000px;
+}
+
+.progress-loader-active {
+    width: 25%;
+    height: 5px;
+    background: #111111;
+    border-radius: 1000px;
+}
+
+.progress-loader-status {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #363636;
+}
+
+.progress-loader-indicator {
+    margin-top: 30px;
+    font-size: 16px;
+    text-align: center;
 }
 
 // Navigation popus

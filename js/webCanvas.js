@@ -33,6 +33,21 @@ manager.onLoad = function () {
 };
 
 manager.onProgress = function (url, itemsLoaded, itemsTotal) {
+    let percentage = Math.round((itemsLoaded/itemsTotal)*100);
+    console.log(percentage);
+    let loaderActive = document.querySelector('.progress-loader-active');
+    let loaderIndicator = document.querySelector('.progress-loader-indicator');
+    let loaderStatus = document.querySelector('.progress-loader-status');
+
+    if (itemsTotal > 10) {
+        loaderStatus.innerHTML = "loading 3D model...";
+    } else {
+        loaderStatus.innerHTML = "loading assets...";
+    }
+    
+    loaderActive.style.width = `${percentage}%`;
+    loaderIndicator.innerHTML = `${percentage}%`;
+
     console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
 };
 
