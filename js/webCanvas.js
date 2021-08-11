@@ -17,6 +17,8 @@ import {
 import showNavigationPopup from './infoPages.js';
 
 
+let canvasLanguage = "ru";
+
 // GUI
 // const gui = new GUI();
 
@@ -525,6 +527,10 @@ export function openCanvas() {
     canvasBlocked = false;
 }
 
+export function changeCanvasLanguage(lang) {
+    canvasLanguage = lang;
+}
+
 // Animation
 const clock = new THREE.Clock();
 
@@ -582,84 +588,84 @@ const tick = () => {
                     document.body.classList.add("navigation-hover");
                     switch (currentIntersect.object.name) {
                         case 'aluTubesPage':
-                            currentPage = "aluTubesPage";
+                            currentPage = `aluTubesPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
                             // changeOpacity(aluTubesPage, 0.3, "up");
                             aluTubesPage.material.opacity = 0.3;
-                            showNavigationPopup("aluTubesPage", popup.x, popup.y);
+                            showNavigationPopup(`aluTubesPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
                         case 'aboutOwnerPage':
-                            currentPage = "aboutOwnerPage";
+                            currentPage = `aboutOwnerPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
                             aboutOwnerPage.material.opacity = 0.3;
                             // changeOpacity(aboutOwnerPage, 0.3, "up");
-                            showNavigationPopup("aboutOwnerPage", popup.x, popup.y);
+                            showNavigationPopup(`aboutOwnerPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
                         case 'laminateTubesPage':
-                            currentPage = "laminateTubesPage";
+                            currentPage = `laminateTubesPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
                             laminateTubesPage.material.opacity = 0.3;
                             // changeOpacity(laminateTubesPage, 0.3, "up");
-                            showNavigationPopup("laminateTubesPage", popup.x, popup.y);
+                            showNavigationPopup(`laminateTubesPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
                         case 'aboutHRPage':
-                            currentPage = "aboutHRPage";
+                            currentPage = `aboutHRPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
                             aboutHRPage.material.opacity = 0.3;
                             // changeOpacity(aboutHRPage, 0.3, "up");
-                            showNavigationPopup("aboutHRPage", popup.x, popup.y);
+                            showNavigationPopup(`aboutHRPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
                         case 'featuresPage':
-                            currentPage = "featuresPage";
+                            currentPage = `featuresPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
                             featuresPage.material.opacity = 0.3;
                             // changeOpacity(featuresPage, 0.3, "up");
-                            showNavigationPopup("featuresPage", popup.x, popup.y);
+                            showNavigationPopup(`featuresPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
                         case 'rAndDPage':
-                            currentPage = "rAndDPage";
+                            currentPage = `rAndDPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
                             rAndDPage.material.opacity = 0.3;
                             // changeOpacity(rAndDPage, 0.3, "up");
-                            showNavigationPopup("rAndDPage", popup.x, popup.y);
+                            showNavigationPopup(`rAndDPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
                         case 'qualityPage':
-                            currentPage = "qualityPage";
+                            currentPage = `qualityPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
                             qualityPage.material.opacity = 0.3;
                             // changeOpacity(qualityPage, 0.3, "up");
-                            showNavigationPopup("qualityPage", popup.x, popup.y);
+                            showNavigationPopup(`qualityPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
                         case 'ecologyPage':
-                            currentPage = "ecologyPage";
+                            currentPage = `ecologyPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
                             ecologyPage.material.opacity = 0.3;
                             // changeOpacity(ecologyPage, 0.3, "up");
-                            showNavigationPopup("ecologyPage", popup.x, popup.y);
+                            showNavigationPopup(`ecologyPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
                         case 'polyethyleneTubesPage':
-                            currentPage = "polyethyleneTubesPage";
+                            currentPage = `polyethyleneTubesPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
                             polyethyleneTubesPage.material.opacity = 0.3;
                             // changeOpacity(polyethyleneTubesPage, 0.3, "up");
-                            showNavigationPopup("polyethyleneTubesPage", popup.x, popup.y);
+                            showNavigationPopup(`polyethyleneTubesPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
                         case 'logisticsPage':
-                            currentPage = "logisticsPage";
+                            currentPage = `logisticsPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
                             logisticsPage.material.opacity = 0.3;
                             // changeOpacity(logisticsPage, 0.3, "up");
-                            showNavigationPopup("logisticsPage", popup.x, popup.y);
+                            showNavigationPopup(`logisticsPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
                     }
                 } else if (currentIntersect.object.name === intersects[0].object.name) {

@@ -1,9 +1,22 @@
 import {
     openCanvas,
-    blockCanvas
+    blockCanvas,
+    changeCanvasLanguage
 } from './webCanvas.js';
 
+let webSiteLanguage = "ru";
+
 document.addEventListener("DOMContentLoaded", function () {
+    let menuBtn = document.querySelectorAll('.menu-btn');
+    let menuCloseBtn = document.querySelectorAll('.menu-close');
+    let menuContainer = document.querySelector('.menu-container');
+    let afterLoaderAnimationContainer = document.querySelector('.animation-container');
+    let afterLoadedAnimation = document.querySelector('#animation-hint-2');
+    let languageSwitcher = document.querySelectorAll('.language-switcher');
+    let langSwitch = document.querySelectorAll('.lang-switch');
+    let pagePreview = document.querySelectorAll('.page-preview');
+
+    changeLanguage("ru");
 
     // Prevent canvas from work when on page
     for (let pageUnit of document.querySelectorAll(".page-unit")) {
@@ -77,10 +90,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // Open page action
     for (let openPageElement of document.querySelectorAll(".openPageElement")) {
         openPageElement.addEventListener("click", (event) => {
+            for (let pageUnit of document.querySelectorAll(".page-unit")) {
+                pageUnit.classList.remove('activePage');
+            }
             let pageToOpen = event.currentTarget.dataset.page;
             blockCanvas();
-            menuContainer.classList.remove('active');
+            document.querySelector(`.menu-container.${webSiteLanguage}-container`).classList.remove('active');
             document.querySelector(`#${pageToOpen}`).classList.toggle("activePage");
+        });
+    }
+
+    // Open submenu action
+    for (let submenu of document.querySelectorAll('.openSubMenuElement')) {
+        submenu.addEventListener('click', (event) => {
+            let subMenuItem = event.currentTarget.dataset.submenu;
+
+            event.currentTarget.classList.toggle('active');
+            document.querySelector(`.${subMenuItem}`).classList.toggle('active');
         });
     }
 
@@ -88,16 +114,66 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let openMainPageItem of document.querySelectorAll('.openPageMain')) {
         openMainPageItem.addEventListener('click', () => {
             openCanvas();
-            menuContainer.classList.remove('active');
+            document.querySelector(`.menu-container.${webSiteLanguage}-container`).classList.remove('active');
             for (let page of document.querySelectorAll(".page-unit")) {
                 page.classList.remove("activePage");
             }
         });
     }
 
+    // Scroll to page content after scroll on page preview
+    let pageScroll = false;
+    for (let page of document.querySelectorAll(".page-container")) {
+        page.addEventListener('scroll', (event) => {   
+            if (event.target === page) {
+                console.log(pageScroll);
+                if (page.scrollTop >= window.innerHeight || page.scrollTop === 0) {
+                    pageScroll = false;
+                    page.classList.remove('no-scroll');
+                }
+                if (pageScroll === false) {
+                    if (page.scrollTop <= window.innerHeight) {
+                        console.log("this");
+                        event.preventDefault();
+                        
+                        if (pageScroll === false) {
+                            if (page.scrollTop > 1 && page.scrollTop < window.innerHeight-10) {
+                                page.scrollTop = pagePreview[0].offsetHeight;
+                                page.classList.add('no-scroll');
+                                pageScroll = true;
+                                
+                            }
+        
+                            if (page.scrollTop > window.innerHeight-10 && page.scrollTop < window.innerHeight) {
+                                page.scrollTop = 0;
+                                page.classList.add('no-scroll');
+                                pageScroll = true;
+                            }
+                        }
+                    } else {
+                        console.log("that");
+                    }
+                } else {
+                    event.preventDefault();
+                }
+                
+                
+                
+            }    
+        });
+    }
+
+
+    // Closing page when click on page preview empty area
+    for (let preview of pagePreview) {
+        preview.addEventListener('click', (event) => {
+            if (event.target === event.currentTarget) {
+                changeLanguage(webSiteLanguage);
+            }
+        });
+    }
+
     // Stopping animation after preloader
-    let afterLoaderAnimationContainer = document.querySelector('.animation-container');
-    let afterLoadedAnimation = document.querySelector('#animation-hint-2');
     afterLoadedAnimation.addEventListener('animationend', () => {
         afterLoaderAnimationContainer.classList.add("transparent");
         setTimeout(() => {
@@ -107,18 +183,67 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Open menu
-    let menuBtn = document.querySelector('.menu-btn');
-    let menuCloseBtn = document.querySelector('.menu-close');
-    let menuContainer = document.querySelector('.menu-container');
-    menuBtn.addEventListener('click', () => {
-        blockCanvas();
-        menuContainer.classList.add('active');
-    });
-    menuCloseBtn.addEventListener('click', () => {
-        openCanvas();
-        menuContainer.classList.remove('active');
-    });
+    for (let btn of menuBtn) {
+        btn.addEventListener('click', () => {
+            blockCanvas();
+            document.querySelector(`.menu-container.${webSiteLanguage}-container`).classList.add('active');
+        });
+    }
+
+    for (let btn of menuCloseBtn) {
+        btn.addEventListener('click', () => {
+            openCanvas();
+            document.querySelector(`.menu-container.${webSiteLanguage}-container`).classList.remove('active');
+        });
+    }
+
+    // Open language switcher
+
+    for (let switcher of languageSwitcher) {
+        switcher.addEventListener('click', () => {
+            switcher.classList.toggle('active');
+            for (let switcher of langSwitch) {
+                switcher.classList.toggle('active');
+            }
+        });
+    }
+
+    for (let switcher of langSwitch) {
+        switcher.addEventListener('click', (event) => {
+            let language = event.currentTarget.dataset.lang;
+
+            changeLanguage(language);
+        });
+    }
 });
+
+function changeLanguage(lang) {
+    blockCanvas();
+    changeCanvasLanguage(lang);
+    webSiteLanguage = lang;
+    // Close everything
+    for (let popup of document.querySelectorAll(".navigationPopup")) {
+        popup.classList.remove("activePopup");
+        popup.style.bottom = "-100px";
+    }
+    for (let page of document.querySelectorAll(".page-unit")) {
+        page.classList.remove("activePage");
+    }
+    for (let menu of document.querySelectorAll(".menu-container")) {
+        menu.classList.remove("active");
+    }
+    for (let container of document.querySelectorAll(".ru-container")) {
+        container.classList.add("unactiveContainer");
+    }
+    for (let container of document.querySelectorAll(".en-container")) {
+        container.classList.add("unactiveContainer");
+    }
+    // Show new language containers
+    for (let container of document.querySelectorAll(`.${lang}-container`)) {
+        container.classList.remove("unactiveContainer");
+    }
+    openCanvas();
+};
 
 const showNavigationPopup = (page, x, y) => {
     for (let popup of document.querySelectorAll(".navigationPopup")) {

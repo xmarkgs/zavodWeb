@@ -12,6 +12,7 @@ $text-black: #111111;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -42,6 +43,7 @@ header {
     width: 100%;
     padding: 30px 50px;
     background: transparent;
+    z-index: 7;
 
     &.on-page {
         transition: .5s;
@@ -73,6 +75,7 @@ header {
 
 .language-switcher {
     margin-right: 46px;
+    position: relative;
     display: flex;
     align-items: center;
 
@@ -81,6 +84,42 @@ header {
         font-weight: bold;
         font-size: 14px;
         color: $text-black;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.active {
+        img {
+            transform: rotateX(180deg);
+        }
+    }
+}
+
+.lang-switch {
+    position: absolute;
+    top: 120%;
+    right: -4px;
+    padding: 15px 20px;
+    background: white;
+    font-weight: bold;
+    font-size: 14px;
+    color: $text-black;
+    transition: .1s;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+
+    &.active {
+        opacity: 1;
+        pointer-events: auto;
+        cursor: pointer;
+
+        &:hover {
+            color: white;
+            background: #427c36;
+        }
     }
 }
 
@@ -140,7 +179,7 @@ header {
     width: 100%;
     min-height: 100%;
     background: white;
-    z-index: 9;
+    z-index: 40;
     transition: .5s;
 
     &.active {
@@ -189,6 +228,77 @@ header {
     cursor: pointer;
 }
 
+.menu-sub {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    
+    .menu-point {
+        font-size: 24px;
+
+        &:not(:nth-child(1)) {
+            margin-top: 24px;
+        }
+    }
+
+    &.active {
+        display: flex;
+    }
+}
+
+.openSubMenuElement {
+    display: flex;
+    align-items: center;
+
+    img {
+        height: 13px;
+        margin-left: 20px;
+    }
+
+    &.active {
+        
+        img {
+            transform: rotateX(180deg);
+        }
+    }
+}
+
+// Languages
+.ru-container {
+
+    &.unactiveContainer {
+        display: none !important;
+    }
+}
+
+.en-container {
+
+    &.unactiveContainer {
+        display: none !important;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+// Website creator
+.website-creator {
+    position: absolute;
+    left: 45px;
+    bottom: 45px;
+    font-weight: 300;
+    font-size: 16px;
+    color: white;
+    z-index: 7;
+
+    a {
+        font-weight: 400;
+        text-transform: uppercase;
+        color: inherit;
+    }
+}
+
 // Contact btn
 .contact-btn {
     position: absolute;
@@ -200,6 +310,7 @@ header {
     background: white;
     cursor: pointer;
     transition: .1s;
+    z-index: 7;
 
     &:hover {
         background: $text-black;
@@ -412,7 +523,7 @@ header {
     width: 100%;
     display: flex;
     flex-direction: column;
-    z-index: 20;
+    z-index: 6;
 }
 
 .page-unit {
@@ -423,10 +534,7 @@ header {
     flex-direction: column;
     width: 100%;
     height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
     transition: .5s ease-in-out;
-    z-index: 6;
 
     &.activePage {
         top: 0;

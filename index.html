@@ -8,6 +8,7 @@
     <title>Document</title>
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/page.css">
 </head>
 
 <body>
@@ -42,7 +43,7 @@
     </div>
 
     <!-- Menu -->
-    <div class="menu-container">
+    <div class="menu-container ru-container">
         <div class="menu-header">
             <div class="header__logo">
                 <img src="img/logo.svg" alt="">
@@ -54,28 +55,65 @@
         </div>
         <div class="menu-points">
             <div class="menu-point active openPageMain">главная</div>
-            <div class="menu-point openPageElement" data-page="">продукция</div>
-            <div class="menu-point openPageElement" data-page="aboutOwnerPage">кабинет директора</div>
-            <div class="menu-point openPageElement" data-page="aboutHRPage">про персонал</div>
-            <div class="menu-point openPageElement" data-page="rAndDPage">r&d</div>
-            <div class="menu-point openPageElement" data-page="logisticsPage">логистика</div>
-            <div class="menu-point openPageElement" data-page="ecologyPage">экология</div>
+            <div class="menu-point openSubMenuElement" data-submenu="production-submenu-ru">продукция<img
+                    src="img/arrows/bottom_arrow_small.svg" alt=""></div>
+            <div class="menu-point menu-sub production-submenu-ru">
+                <div class="menu-point openPageElement" data-page="aluTubesPage-ru">Alutubes</div>
+                <div class="menu-point openPageElement" data-page="laminateTubesPage-ru">Laminate</div>
+                <div class="menu-point openPageElement" data-page="polyethyleneTubesPage-ru">PolyethyleneTubes</div>
+            </div>
+            <div class="menu-point openPageElement" data-page="aboutOwnerPage-ru">кабинет директора</div>
+            <div class="menu-point openPageElement" data-page="aboutHRPage-ru">про персонал</div>
+            <div class="menu-point openPageElement" data-page="rAndDPage-ru">r&d</div>
+            <div class="menu-point openPageElement" data-page="logisticsPage-ru">логистика</div>
+            <div class="menu-point openPageElement" data-page="ecologyPage-ru">экология</div>
             <div class="menu-point openPageElement" data-page="">наши преимущества</div>
-            <div class="menu-point openPageElement" data-page="contactPage">контакты</div>
+            <div class="menu-point openPageElement" data-page="contactPage-ru">контакты</div>
+        </div>
+    </div>
+    <div class="menu-container en-container">
+        <div class="menu-header">
+            <div class="header__logo">
+                <img src="img/logo.svg" alt="">
+                <p>tube plant</p>
+            </div>
+            <div class="menu-close">
+                <img src="img/icons/close.svg" alt="">
+            </div>
+        </div>
+        <div class="menu-points">
+            <div class="menu-point active openPageMain">главная</div>
+            <div class="menu-point openSubMenuElement" data-submenu="production-submenu-en">продукция<img
+                    src="img/arrows/bottom_arrow_small.svg" alt=""> </div>
+            <div class="menu-point menu-sub production-submenu-en">
+                <div class="menu-point openPageElement" data-page="aluTubesPage-en">Alutubes</div>
+                <div class="menu-point openPageElement" data-page="laminateTubesPage-en">Laminate</div>
+                <div class="menu-point openPageElement" data-page="polyethyleneTubesPage-en">PolyethyleneTubes</div>
+            </div>
+            <div class="menu-point openPageElement" data-page="aboutOwnerPage-en">кабинет директора</div>
+            <div class="menu-point openPageElement" data-page="aboutHRPage-en">про персонал</div>
+            <div class="menu-point openPageElement" data-page="rAndDPage-en">r&d</div>
+            <div class="menu-point openPageElement" data-page="logisticsPage-en">логистика</div>
+            <div class="menu-point openPageElement" data-page="ecologyPage-en">экология</div>
+            <div class="menu-point openPageElement" data-page="">наши преимущества</div>
+            <div class="menu-point openPageElement" data-page="contactPage-en">контакты</div>
         </div>
     </div>
 
     <!-- Three.js -->
     <main>
-        <header>
+        <header class="ru-container">
             <div class="header__logo">
                 <img src="img/logo.svg" alt="">
                 <p>тубный завод</p>
             </div>
             <div class="header__navigation">
                 <div class="language-switcher">
-                    <p>EN</p>
+                    <p>RU</p>
                     <img src="img/arrows/bottom_arrow_small.svg" alt="">
+                    <div class="lang-switch" data-lang="en">
+                        EN
+                    </div>
                 </div>
                 <div class="menu-btn">
                     <p>меню</p>
@@ -87,130 +125,321 @@
                 </div>
             </div>
         </header>
+        <header class="en-container">
+            <div class="header__logo">
+                <img src="img/logo.svg" alt="">
+                <p>тубный завод</p>
+            </div>
+            <div class="header__navigation">
+                <div class="language-switcher">
+                    <p>EN</p>
+                    <img src="img/arrows/bottom_arrow_small.svg" alt="">
+                    <div class="lang-switch" data-lang="ru">
+                        RU
+                    </div>
+                </div>
+                <div class="menu-btn">
+                    <p>menu</p>
+                    <div class="menu-icon">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </header>
         <canvas class="webgl"></canvas>
-        <div class="contact-btn openPageElement" data-page="contactPage">
+        <div class="website-creator">
+            Designed by <a href="https://soloviov.agency/" target="_blank">soloviov</a>
+        </div>
+        <div class="contact-btn openPageElement ru-container" data-page="contactPage-ru">
             <img src="img/icons/info.svg" alt="">
             <p>контакты</p>
+        </div>
+        <div class="contact-btn openPageElement en-container" data-page="contactPage-en">
+            <img src="img/icons/info.svg" alt="">
+            <p>contacts</p>
         </div>
     </main>
 
     <!-- Popups -->
-    <div class="navigationPopup" data-page="aluTubesPage">
+    <div class="navigationPopup" data-page="aluTubesPage-ru">
         <h3>Алюминивыевые тубы</h3>
         <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="aluTubesPage">Открыть страницу</span> -->
     </div>
-    <div class="navigationPopup" data-page="aboutOwnerPage">
+    <div class="navigationPopup" data-page="aboutOwnerPage-ru">
         <h3>О владельце</h3>
         <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="aboutOwnerPage">Открыть страницу</span> -->
     </div>
-    <div class="navigationPopup" data-page="laminateTubesPage">
+    <div class="navigationPopup" data-page="laminateTubesPage-ru">
         <h3>Ламинатные трубы</h3>
         <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="laminateTubesPage">Открыть страницу</span> -->
     </div>
-    <div class="navigationPopup" data-page="aboutHRPage">
+    <div class="navigationPopup" data-page="aboutHRPage-ru">
         <h3>Про персонал</h3>
         <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="aboutHRPage">Открыть страницу</span> -->
     </div>
-    <div class="navigationPopup" data-page="featuresPage">
+    <div class="navigationPopup" data-page="featuresPage-ru">
         <h3>Фишки</h3>
         <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="featuresPage">Открыть страницу</span> -->
     </div>
-    <div class="navigationPopup" data-page="rAndDPage">
+    <div class="navigationPopup" data-page="rAndDPage-ru">
         <h3>R&D</h3>
         <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="rAndDPage">Открыть страницу</span> -->
     </div>
-    <div class="navigationPopup" data-page="qualityPage">
+    <div class="navigationPopup" data-page="qualityPage-ru">
         <h3>Отдел качества</h3>
         <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="qualityPage">Открыть страницу</span> -->
     </div>
-    <div class="navigationPopup" data-page="ecologyPage">
+    <div class="navigationPopup" data-page="ecologyPage-ru">
         <h3>Екология</h3>
         <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="ecologyPage">Открыть страницу</span> -->
     </div>
-    <div class="navigationPopup" data-page="polyethyleneTubesPage">
+    <div class="navigationPopup" data-page="polyethyleneTubesPage-ru">
         <h3>Полиетиленовые трубы</h3>
         <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="polyethyleneTubesPage">Открыть страницу</span> -->
     </div>
-    <div class="navigationPopup" data-page="logisticsPage">
+    <div class="navigationPopup" data-page="logisticsPage-ru">
+        <h3>Логистика</h3>
+        <img src="img/arrows/arrow_right.svg" alt="">
+        <!-- <span class="openPageSpan" data-page="logisticsPage">Открыть страницу</span> -->
+    </div>
+    <div class="navigationPopup" data-page="aluTubesPage-en">
+        <h3>Alutubes</h3>
+        <img src="img/arrows/arrow_right.svg" alt="">
+        <!-- <span class="openPageSpan" data-page="aluTubesPage">Открыть страницу</span> -->
+    </div>
+    <div class="navigationPopup" data-page="aboutOwnerPage-en">
+        <h3>О владельце</h3>
+        <img src="img/arrows/arrow_right.svg" alt="">
+        <!-- <span class="openPageSpan" data-page="aboutOwnerPage">Открыть страницу</span> -->
+    </div>
+    <div class="navigationPopup" data-page="laminateTubesPage-en">
+        <h3>Ламинатные трубы</h3>
+        <img src="img/arrows/arrow_right.svg" alt="">
+        <!-- <span class="openPageSpan" data-page="laminateTubesPage">Открыть страницу</span> -->
+    </div>
+    <div class="navigationPopup" data-page="aboutHRPage-en">
+        <h3>Про персонал</h3>
+        <img src="img/arrows/arrow_right.svg" alt="">
+        <!-- <span class="openPageSpan" data-page="aboutHRPage">Открыть страницу</span> -->
+    </div>
+    <div class="navigationPopup" data-page="featuresPage-en">
+        <h3>Фишки</h3>
+        <img src="img/arrows/arrow_right.svg" alt="">
+        <!-- <span class="openPageSpan" data-page="featuresPage">Открыть страницу</span> -->
+    </div>
+    <div class="navigationPopup" data-page="rAndDPage-en">
+        <h3>R&D</h3>
+        <img src="img/arrows/arrow_right.svg" alt="">
+        <!-- <span class="openPageSpan" data-page="rAndDPage">Открыть страницу</span> -->
+    </div>
+    <div class="navigationPopup" data-page="qualityPage-en">
+        <h3>Отдел качества</h3>
+        <img src="img/arrows/arrow_right.svg" alt="">
+        <!-- <span class="openPageSpan" data-page="qualityPage">Открыть страницу</span> -->
+    </div>
+    <div class="navigationPopup" data-page="ecologyPage-en">
+        <h3>Екология</h3>
+        <img src="img/arrows/arrow_right.svg" alt="">
+        <!-- <span class="openPageSpan" data-page="ecologyPage">Открыть страницу</span> -->
+    </div>
+    <div class="navigationPopup" data-page="polyethyleneTubesPage-en">
+        <h3>Полиетиленовые трубы</h3>
+        <img src="img/arrows/arrow_right.svg" alt="">
+        <!-- <span class="openPageSpan" data-page="polyethyleneTubesPage">Открыть страницу</span> -->
+    </div>
+    <div class="navigationPopup" data-page="logisticsPage-en">
         <h3>Логистика</h3>
         <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="logisticsPage">Открыть страницу</span> -->
     </div>
     <!-- Pages -->
     <div class="pages-container">
-        <div class="page-unit" id="aluTubesPage">
-            <div class="aluTubesPage-container">
-                Алюминивыевые трубы<br>
-                <span class="closePageSpan" data-page="aluTubesPage">Закрыть страницу</span>
+        <div class="page-unit" id="aluTubesPage-ru">
+            <div class="page-container" data-scroll="aluTubesPage-ru-content" data-id="aluTubesPage-ru">
+                <div class="page-preview">
+                    <div class="page-preview__info">
+                        <span class="page-preview__category">
+                            продукция
+                        </span>
+                        <h1 class="page-preview__title">
+                            Алюминивыевые тубы
+                        </h1>
+                        <div class="page-preview__description">
+                            <div class="page-preview__divider"></div>
+                            <p>
+                                Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько
+                                абзацев более менее осмысленного текста рыбы на русском языке, а начинающему оратору
+                                отточить навык публичных.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="page-preview__hint">
+                        <img src="img/pointers/scroll_pointer_white.svg" alt="">
+                        <p>скроль вниз</p>
+                    </div>
+                </div>
+                <div class="page-content" id="aluTubesPage-ru-content">
+                    <header class="ru-container">
+                        <div class="header__logo">
+                            <img src="img/logo.svg" alt="">
+                            <p>тубный завод</p>
+                        </div>
+                        <div class="header__navigation">
+                            <div class="language-switcher">
+                                <p>RU</p>
+                                <img src="img/arrows/bottom_arrow_small.svg" alt="">
+                                <div class="lang-switch" data-lang="en">
+                                    EN
+                                </div>
+                            </div>
+                            <div class="menu-btn">
+                                <p>меню</p>
+                                <div class="menu-icon">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                </div>
             </div>
         </div>
-        <div class="page-unit" id="aboutOwnerPage">
+        <div class="page-unit" id="aboutOwnerPage-ru">
             <div class="aluTubesPage-container">
                 О владельце<br>
-                <span class="closePageSpan" data-page="aboutOwnerPage">Закрыть страницу</span>
+                <span class="closePageSpan" data-page="aboutOwnerPage-ru">Закрыть страницу</span>
             </div>
         </div>
-        <div class="page-unit" id="laminateTubesPage">
+        <div class="page-unit" id="laminateTubesPage-ru">
             <div class="aluTubesPage-container">
                 Ламинатные тубы<br>
-                <span class="closePageSpan" data-page="laminateTubesPage">Закрыть страницу</span>
+                <span class="closePageSpan" data-page="laminateTubesPage-ru">Закрыть страницу</span>
             </div>
         </div>
-        <div class="page-unit" id="aboutHRPage">
+        <div class="page-unit" id="aboutHRPage-ru">
             <div class="aluTubesPage-container">
                 Про персонал<br>
-                <span class="closePageSpan" data-page="aboutHRPage">Закрыть страницу</span>
+                <span class="closePageSpan" data-page="aboutHRPage-ru">Закрыть страницу</span>
             </div>
         </div>
-        <div class="page-unit" id="featuresPage">
+        <div class="page-unit" id="featuresPage-ru">
             <div class="aluTubesPage-container">
                 Фишки<br>
-                <span class="closePageSpan" data-page="featuresPage">Закрыть страницу</span>
+                <span class="closePageSpan" data-page="featuresPage-ru">Закрыть страницу</span>
             </div>
         </div>
-        <div class="page-unit" id="rAndDPage">
+        <div class="page-unit" id="rAndDPage-ru">
             <div class="aluTubesPage-container">
                 R&D<br>
-                <span class="closePageSpan" data-page="rAndDPage">Закрыть страницу</span>
+                <span class="closePageSpan" data-page="rAndDPage-ru">Закрыть страницу</span>
             </div>
         </div>
-        <div class="page-unit" id="qualityPage">
+        <div class="page-unit" id="qualityPage-ru">
             <div class="aluTubesPage-container">
                 Отдел качества<br>
-                <span class="closePageSpan" data-page="qualityPage">Закрыть страницу</span>
+                <span class="closePageSpan" data-page="qualityPage-ru">Закрыть страницу</span>
             </div>
         </div>
-        <div class="page-unit" id="ecologyPage">
+        <div class="page-unit" id="ecologyPage-ru">
             <div class="aluTubesPage-container">
                 Екология<br>
-                <span class="closePageSpan" data-page="ecologyPage">Закрыть страницу</span>
+                <span class="closePageSpan" data-page="ecologyPage-ru">Закрыть страницу</span>
             </div>
         </div>
-        <div class="page-unit" id="polyethyleneTubesPage">
+        <div class="page-unit" id="polyethyleneTubesPage-ru">
             <div class="aluTubesPage-container">
                 Полиетиленовые трубы<br>
-                <span class="closePageSpan" data-page="polyethyleneTubesPage">Закрыть страницу</span>
+                <span class="closePageSpan" data-page="polyethyleneTubesPage-ru">Закрыть страницу</span>
             </div>
         </div>
-        <div class="page-unit" id="logisticsPage">
+        <div class="page-unit" id="logisticsPage-ru">
             <div class="aluTubesPage-container">
                 Логистика<br>
-                <span class="closePageSpan" data-page="logisticsPage">Закрыть страницу</span>
+                <span class="closePageSpan" data-page="logisticsPage-ru">Закрыть страницу</span>
             </div>
         </div>
-        <div class="page-unit" id="contactPage">
+        <div class="page-unit" id="contactPage-ru">
             <div class="aluTubesPage-container">
                 Контакты<br>
-                <span class="closePageSpan" data-page="contactPage">Закрыть страницу</span>
+                <span class="closePageSpan" data-page="contactPage-ru">Закрыть страницу</span>
+            </div>
+        </div>
+        <div class="page-unit" id="aluTubesPage-en">
+            <div class="aluTubesPage-container">
+                Alutubes<br>
+                <span class="closePageSpan" data-page="aluTubesPage-en">Закрыть страницу</span>
+            </div>
+        </div>
+        <div class="page-unit" id="aboutOwnerPage-en">
+            <div class="aluTubesPage-container">
+                О владельце<br>
+                <span class="closePageSpan" data-page="aboutOwnerPage-en">Закрыть страницу</span>
+            </div>
+        </div>
+        <div class="page-unit" id="laminateTubesPage-en">
+            <div class="aluTubesPage-container">
+                Ламинатные тубы<br>
+                <span class="closePageSpan" data-page="laminateTubesPage-en">Закрыть страницу</span>
+            </div>
+        </div>
+        <div class="page-unit" id="aboutHRPage-en">
+            <div class="aluTubesPage-container">
+                Про персонал<br>
+                <span class="closePageSpan" data-page="aboutHRPage-en">Закрыть страницу</span>
+            </div>
+        </div>
+        <div class="page-unit" id="featuresPage-en">
+            <div class="aluTubesPage-container">
+                Фишки<br>
+                <span class="closePageSpan" data-page="featuresPage-en">Закрыть страницу</span>
+            </div>
+        </div>
+        <div class="page-unit" id="rAndDPage-en">
+            <div class="aluTubesPage-container">
+                R&D<br>
+                <span class="closePageSpan" data-page="rAndDPage-en">Закрыть страницу</span>
+            </div>
+        </div>
+        <div class="page-unit" id="qualityPage-en">
+            <div class="aluTubesPage-container">
+                Отдел качества<br>
+                <span class="closePageSpan" data-page="qualityPage-en">Закрыть страницу</span>
+            </div>
+        </div>
+        <div class="page-unit" id="ecologyPage-en">
+            <div class="aluTubesPage-container">
+                Екология<br>
+                <span class="closePageSpan" data-page="ecologyPage-en">Закрыть страницу</span>
+            </div>
+        </div>
+        <div class="page-unit" id="polyethyleneTubesPage-en">
+            <div class="aluTubesPage-container">
+                Полиетиленовые трубы<br>
+                <span class="closePageSpan" data-page="polyethyleneTubesPage-en">Закрыть страницу</span>
+            </div>
+        </div>
+        <div class="page-unit" id="logisticsPage-en">
+            <div class="aluTubesPage-container">
+                Логистика<br>
+                <span class="closePageSpan" data-page="logisticsPage-en">Закрыть страницу</span>
+            </div>
+        </div>
+        <div class="page-unit" id="contactPage-en">
+            <div class="aluTubesPage-container">
+                Контакты<br>
+                <span class="closePageSpan" data-page="contactPage-en">Закрыть страницу</span>
             </div>
         </div>
     </div>
