@@ -126,7 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let page of document.querySelectorAll(".page-container")) {
         page.addEventListener('scroll', (event) => {   
             if (event.target === page) {
-                console.log(pageScroll);
                 if (page.scrollTop >= window.innerHeight || page.scrollTop === 0) {
                     pageScroll = false;
                     page.classList.remove('no-scroll');
@@ -138,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         
                         if (pageScroll === false) {
                             if (page.scrollTop > 1 && page.scrollTop < window.innerHeight-10) {
-                                page.scrollTop = pagePreview[0].offsetHeight;
+                                page.scrollTop = pagePreview[0].offsetHeight + 2;
                                 page.classList.add('no-scroll');
                                 pageScroll = true;
                                 

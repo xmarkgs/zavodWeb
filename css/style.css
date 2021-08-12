@@ -202,7 +202,7 @@ header.on-page {
 
 .menu-container {
   position: absolute;
-  top: -100%;
+  top: -120vh;
   left: 0;
   width: 100%;
   min-height: 100%;
