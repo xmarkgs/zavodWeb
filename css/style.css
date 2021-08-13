@@ -644,6 +644,10 @@ header.on-page {
   top: 0;
 }
 
+.page-unit.scrolling {
+  overflow-y: scroll;
+}
+
 .aluTubesPage-container {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -539,6 +539,10 @@ header {
     &.activePage {
         top: 0;
     }
+
+    &.scrolling {
+        overflow-y: scroll;
+    }
 }
 
 .aluTubesPage-container {

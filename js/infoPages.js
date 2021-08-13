@@ -129,6 +129,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (page.scrollTop >= window.innerHeight || page.scrollTop === 0) {
                     pageScroll = false;
                     page.classList.remove('no-scroll');
+                    for (let pageUnit of document.querySelectorAll(".page-unit")) {
+                        pageUnit.classList.remove('scrolling');
+                    }
                 }
                 if (pageScroll === false) {
                     if (page.scrollTop <= window.innerHeight) {
@@ -139,6 +142,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             if (page.scrollTop > 1 && page.scrollTop < window.innerHeight-10) {
                                 page.scrollTop = pagePreview[0].offsetHeight + 2;
                                 page.classList.add('no-scroll');
+                                for (let pageUnit of document.querySelectorAll(".page-unit")) {
+                                    pageUnit.classList.add('scrolling');
+                                }
                                 pageScroll = true;
                                 
                             }
@@ -146,6 +152,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             if (page.scrollTop > window.innerHeight-10 && page.scrollTop < window.innerHeight) {
                                 page.scrollTop = 0;
                                 page.classList.add('no-scroll');
+                                for (let pageUnit of document.querySelectorAll(".page-unit")) {
+                                    pageUnit.classList.add('scrolling');
+                                }
                                 pageScroll = true;
                             }
                         }
