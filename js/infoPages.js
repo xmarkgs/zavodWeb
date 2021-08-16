@@ -81,6 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Close page action
     for (let closePageSpan of document.querySelectorAll(".closePageSpan")) {
         closePageSpan.addEventListener("click", (event) => {
+            for (let page of document.querySelectorAll(".page-container")) {
+                page.scrollTop = 0;
+            }
             let pageToClose = event.target.dataset.page;
             document.querySelector(`#${pageToClose}`).classList.toggle("activePage");
             openCanvas();
@@ -92,6 +95,9 @@ document.addEventListener("DOMContentLoaded", function () {
         openPageElement.addEventListener("click", (event) => {
             for (let pageUnit of document.querySelectorAll(".page-unit")) {
                 pageUnit.classList.remove('activePage');
+            }
+            for (let page of document.querySelectorAll(".page-container")) {
+                page.scrollTop = 0;
             }
             let pageToOpen = event.currentTarget.dataset.page;
             blockCanvas();
@@ -118,6 +124,9 @@ document.addEventListener("DOMContentLoaded", function () {
             for (let page of document.querySelectorAll(".page-unit")) {
                 page.classList.remove("activePage");
             }
+            for (let page of document.querySelectorAll(".page-container")) {
+                page.scrollTop = 0;
+            }
         });
     }
 
@@ -125,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let pageScroll = false;
     for (let page of document.querySelectorAll(".page-container")) {
         page.addEventListener('scroll', (event) => {   
-            if (event.target === page) {
+            if (event.target === page && event.target !== document.querySelector('#content-contactPage-ru') && event.target !== document.querySelector('#content-contactPage-en')) {
                 if (page.scrollTop >= window.innerHeight || page.scrollTop === 0) {
                     pageScroll = false;
                     page.classList.remove('no-scroll');
@@ -135,7 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 if (pageScroll === false) {
                     if (page.scrollTop <= window.innerHeight) {
-                        console.log("this");
                         event.preventDefault();
                         
                         if (pageScroll === false) {
@@ -158,8 +166,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                 pageScroll = true;
                             }
                         }
-                    } else {
-                        console.log("that");
                     }
                 } else {
                     event.preventDefault();
@@ -264,7 +270,6 @@ const showNavigationPopup = (page, x, y) => {
             popup.style.left = `${x+popup.offsetWidth*0.2}px`;
             popup.style.bottom = `${y+62}px`;
             popup.classList.toggle("activePopup");
-            console.log(x, y);
         }
     }
 };

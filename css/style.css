@@ -478,6 +478,7 @@ header.on-page {
   opacity: 0;
   font-weight: 900;
   font-size: 150px;
+  text-align: center;
 }
 
 .animation-container.animated h1 {
