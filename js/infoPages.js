@@ -4,7 +4,9 @@ import {
     changeCanvasLanguage
 } from './webCanvas.js';
 
+
 let webSiteLanguage = "ru";
+
 
 document.addEventListener("DOMContentLoaded", function () {
     let menuBtn = document.querySelectorAll('.menu-btn');
@@ -16,7 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let langSwitch = document.querySelectorAll('.lang-switch');
     let pagePreview = document.querySelectorAll('.page-preview');
 
-    changeLanguage("ru");
+    if (window.location.href.includes("lang=en")) {
+        changeLanguage("en");
+    } else {
+        changeLanguage("ru");
+    }
 
     // Prevent canvas from work when on page
     for (let pageUnit of document.querySelectorAll(".page-unit")) {
@@ -133,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Scroll to page content after scroll on page preview
     let pageScroll = false;
     for (let page of document.querySelectorAll(".page-container")) {
-        page.addEventListener('scroll', (event) => {   
+        page.addEventListener('scroll', (event) => {
             if (event.target === page && event.target !== document.querySelector('#content-contactPage-ru') && event.target !== document.querySelector('#content-contactPage-en')) {
                 if (page.scrollTop >= window.innerHeight || page.scrollTop === 0) {
                     pageScroll = false;
@@ -145,19 +151,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (pageScroll === false) {
                     if (page.scrollTop <= window.innerHeight) {
                         event.preventDefault();
-                        
+
                         if (pageScroll === false) {
-                            if (page.scrollTop > 1 && page.scrollTop < window.innerHeight-10) {
+                            if (page.scrollTop > 1 && page.scrollTop < window.innerHeight - 10) {
                                 page.scrollTop = pagePreview[0].offsetHeight + 2;
                                 page.classList.add('no-scroll');
                                 for (let pageUnit of document.querySelectorAll(".page-unit")) {
                                     pageUnit.classList.add('scrolling');
                                 }
                                 pageScroll = true;
-                                
+
                             }
-        
-                            if (page.scrollTop > window.innerHeight-10 && page.scrollTop < window.innerHeight) {
+
+                            if (page.scrollTop > window.innerHeight - 10 && page.scrollTop < window.innerHeight) {
                                 page.scrollTop = 0;
                                 page.classList.add('no-scroll');
                                 for (let pageUnit of document.querySelectorAll(".page-unit")) {
@@ -170,10 +176,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     event.preventDefault();
                 }
-                
-                
-                
-            }    
+
+
+
+            }
         });
     }
 
@@ -256,8 +262,10 @@ function changeLanguage(lang) {
     for (let container of document.querySelectorAll(`.${lang}-container`)) {
         container.classList.remove("unactiveContainer");
     }
+    window.history.replaceState({}, "Zavod Web", `http://localhost:5500/main.html?lang=${lang}`);
     openCanvas();
 };
+
 
 const showNavigationPopup = (page, x, y) => {
     for (let popup of document.querySelectorAll(".navigationPopup")) {
@@ -267,8 +275,14 @@ const showNavigationPopup = (page, x, y) => {
     }
     for (let popup of document.querySelectorAll(".navigationPopup")) {
         if (popup.dataset.page === page) {
-            popup.style.left = `${x+popup.offsetWidth*0.2}px`;
-            popup.style.bottom = `${y+62}px`;
+            if (window.screen.width < 768) {
+                popup.style.left = `5px`;
+                popup.style.bottom = `72px`;
+            } else {
+                popup.style.left = `${x+popup.offsetWidth*0.2}px`;
+                popup.style.bottom = `${y+62}px`;
+            }
+
             popup.classList.toggle("activePopup");
         }
     }

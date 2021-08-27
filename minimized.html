@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тубный завод | Tube plant</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/page.css">
+    <link rel="stylesheet" href="css/minimized.css">
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.svg">
+</head>
+
+<body>
+    <div id="fullpage">
+        <div class="section" data-page="aluTubesPage">
+            <div class="section__image">
+                <img src="img/images/minimized/pagebackground.png" alt="">
+            </div>
+        </div>
+        <div class="section" data-page="polyethyleneTubesPage">
+            <div class="section__image">
+                <img src="img/images/minimized/pagebackground.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- Animation -->
+    <div class="animation-container animated">
+        <h1>Тубный завод</h1>
+        <div class="animation-hint" id="animation-hint-1">
+            <img src="img/pointers/scroll_pointer_grey.svg" alt="">
+            <p>скроль вниз</p>
+        </div>
+    </div>
+
+    <!-- Menu -->
+    <div class="menu-container ru-container">
+        <div class="menu-header">
+            <div class="header__logo">
+                <img src="img/logo.svg" alt="">
+                <p>тубный завод</p>
+            </div>
+            <div class="menu-close">
+                <img src="img/icons/close.svg" alt="">
+            </div>
+        </div>
+        <div class="menu-points">
+            <div class="menu-point active openPageMain">главная</div>
+            <div class="menu-point openSubMenuElement" data-submenu="production-submenu-ru">продукция<img
+                    src="img/arrows/bottom_arrow_small.svg" alt=""></div>
+            <div class="menu-point menu-sub production-submenu-ru">
+                <div class="menu-point openPageElement" data-page="aluTubesPage-ru">Alutubes</div>
+                <div class="menu-point openPageElement" data-page="laminateTubesPage-ru">Laminate</div>
+                <div class="menu-point openPageElement" data-page="polyethyleneTubesPage-ru">PolyethyleneTubes</div>
+            </div>
+            <div class="menu-point openPageElement" data-page="aboutOwnerPage-ru">кабинет директора</div>
+            <div class="menu-point openPageElement" data-page="aboutHRPage-ru">про персонал</div>
+            <div class="menu-point openPageElement" data-page="rAndDPage-ru">r&d</div>
+            <div class="menu-point openPageElement" data-page="logisticsPage-ru">логистика</div>
+            <div class="menu-point openPageElement" data-page="ecologyPage-ru">экология</div>
+            <div class="menu-point openPageElement" data-page="">наши преимущества</div>
+            <div class="menu-point openPageElement" data-page="contactPage-ru">контакты</div>
+        </div>
+    </div>
+
+    <main>
+        <header class="ru-container">
+            <a href="/" class="header__logo_link">
+                <div class="header__logo">
+                    <img src="img/logo.svg" alt="">
+                    <p>тубный завод</p>
+                </div>
+            </a>
+            <div class="header__navigation">
+                <div class="language-switcher">
+                    <p>RU</p>
+                    <img src="img/arrows/bottom_arrow_small.svg" alt="">
+                    <div class="lang-switch" data-lang="en">
+                        <a href="minimizedEng.html">EN</a>
+                    </div>
+                </div>
+                <a href="main.html?lang=ru" class="watch-3d">
+                    <img src="img/icons/three-dimensions.svg" alt="">
+                    <span>смотреть 3D</span>
+                </a>
+                <div class="menu-btn">
+                    <p>меню</p>
+                    <div class="menu-icon">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="website-minimized">
+            <div class="content-container website-minimized__container">
+                <div class="page-info page-info_aluTubesPage active">
+                    <img src="img/images/minimized/pagebackground.png" alt="" class="page-info__thumbnail">
+                    <span class="page-preview__category">
+                        продукция
+                    </span>
+                    <h1 class="page-preview__title">
+                        Алюминивыевые тубы
+                    </h1>
+                    <a href="aluTubesPage-ru.html" class="version-select-btn">
+                        подробнее
+                    </a>
+                    <div class="animation-hint">
+                        <img src="img/pointers/scroll_pointer_grey.svg" alt="">
+                        <p>скроль вниз</p>
+                    </div>
+                </div>
+                <div class="page-info page-info_polyethyleneTubesPage">
+                    <img src="img/images/minimized/pagebackground.png" alt="" class="page-info__thumbnail">
+                    <span class="page-preview__category">
+                        продукция
+                    </span>
+                    <h1 class="page-preview__title">
+                        Полиетиленовые тубы
+                    </h1>
+                    <a href="minimized.html" class="version-select-btn">
+                        подробнее
+                    </a>
+                    <div class="animation-hint">
+                        <img src="img/pointers/scroll_pointer_grey.svg" alt="">
+                        <p>скроль вниз</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="website-creator">
+            Designed by <a href="https://soloviov.agency/" target="_blank">soloviov</a>
+        </div>
+        <div class="contact-btn openPageElement ru-container" data-page="contactPage-ru">
+            <img src="img/icons/info.svg" alt="">
+            <p>контакты</p>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/mainPage.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.css"
+        integrity="sha512-TD/aL30dNLN0VaHVoh9voFlNi7ZuWQYtV4bkIJv2ulZ8mEEkZJ7IyGvDthMKvIUwzLmPONnjQlAi55HTERVXpw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js"
+        integrity="sha512-gSf3NCgs6wWEdztl1e6vUqtRP884ONnCNzCpomdoQ0xXsk06lrxJsR7jX5yM/qAGkPGsps+4bLV5IEjhOZX+gg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        let pageInfos = document.querySelectorAll('.page-info');
+        new fullpage('#fullpage', {
+            autoScrolling: true,
+            fitToSectionDelay: 200
+        });
+        if (window.innerWidth < 768) {
+            fullpage_api.destroy('all');
+            document.querySelector('#fullpage').classList.add("disabled");
+            for (let pageInfo of pageInfos) {
+                pageInfo.classList.remove('active');
+            }
+            for (let pageInfo of pageInfos) {
+                pageInfo.classList.add('mobile');
+            }
+        } else {
+            document.querySelector('#fullpage').classList.remove("disabled");
+            for (let pageInfo of pageInfos) {
+                pageInfo.classList.remove('mobile');
+            }
+        }
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 768) {
+                fullpage_api.destroy('all');
+                document.querySelector('#fullpage').classList.add("disabled");
+                for (let pageInfo of pageInfos) {
+                    pageInfo.classList.remove('active');
+                }
+                for (let pageInfo of pageInfos) {
+                    pageInfo.classList.add('mobile');
+                }
+            } else {
+                if (document.querySelector('#fullpage').classList.contains('fp-destroyed')) {
+                    new fullpage('#fullpage', {
+                        autoScrolling: true,
+                        fitToSectionDelay: 200
+                    });
+                }
+                document.querySelector('#fullpage').classList.remove("disabled");
+                pageInfos[0].classList.add('active');
+                for (let pageInfo of pageInfos) {
+                    pageInfo.classList.remove('mobile');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

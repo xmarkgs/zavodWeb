@@ -361,6 +361,11 @@ header {
         top: 0;
     }
 
+    img {
+        width: 160px;
+        height: 160px;
+    }
+
     h1 {
         margin-top: 54px;
         font-size: 50px;
@@ -522,6 +527,10 @@ header {
         height: 62px;
         background-image: url('../img/popup_vector.svg');
         background-repeat: no-repeat;
+
+        @media screen and (max-width: 767px) {
+            display: none;
+        }
     }
 }
 

@@ -1,0 +1,232 @@
+main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lang-switch {
+  -webkit-transition: 0s;
+  transition: 0s;
+}
+
+.lang-switch a {
+  padding: 15px 20px;
+  color: #111111;
+  text-decoration: none;
+}
+
+.lang-switch.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+  background: #f1f1f1;
+}
+
+.lang-switch.active:hover a {
+  color: white;
+}
+
+.website-creator {
+  color: #111111;
+}
+
+.website-minimized {
+  height: 100%;
+}
+
+.website-minimized__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  background: url("../img/backgrounds/minimized/background_logo.png");
+  background-repeat: no-repeat;
+  background-position: 250px;
+  background-size: 30%;
+}
+
+.version-select-btn {
+  margin-top: 52px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 22px 69px;
+  border: 1px solid #111111;
+  -webkit-transition: .1s;
+  transition: .1s;
+  color: #111111;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 14px;
+  letter-spacing: 10%;
+}
+
+.version-select-btn img {
+  margin-left: 10px;
+}
+
+.version-select-btn:hover {
+  color: white;
+  background: #111111;
+}
+
+.version-select-btn:hover img {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.animation-container {
+  background: url("../img/backgrounds/minimized/background_loader.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.page-info {
+  position: absolute;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-user-drag: none;
+  opacity: 0;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.page-info .animation-hint {
+  margin-top: 56px;
+  opacity: 1;
+}
+
+.page-info.active {
+  opacity: 1;
+  pointer-events: all;
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
+  -webkit-user-drag: auto;
+}
+
+.page-info.mobile {
+  position: unset;
+  opacity: 1;
+  pointer-events: all;
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
+  -webkit-user-drag: auto;
+}
+
+.section .section__image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.section img {
+  width: 48%;
+}
+
+.page-info__thumbnail {
+  margin-bottom: 30px;
+  display: none;
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  header {
+    position: unset;
+  }
+  #fullpage {
+    display: none;
+  }
+  .website-minimized {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .website-minimized__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  main {
+    overflow-y: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .contact-btn {
+    position: unset;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 24px;
+  }
+  .contact-btn p {
+    display: inline;
+  }
+  .page-info {
+    margin-bottom: 50px;
+  }
+  .page-info .animation-hint {
+    display: none;
+  }
+  .page-info .version-select-btn {
+    margin-top: 25px;
+  }
+  .page-info__thumbnail {
+    display: block;
+  }
+  .website-creator {
+    position: unset;
+    text-align: center;
+  }
+}
+
+.page-container {
+  overflow-y: auto;
+}
+
+main.infopage {
+  overflow-y: auto;
+}
+/*# sourceMappingURL=minimized.css.map */

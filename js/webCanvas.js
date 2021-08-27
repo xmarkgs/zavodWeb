@@ -138,6 +138,7 @@ window.addEventListener('resize', () => {
     // Update sizes
     sizes.width = window.innerWidth;
     sizes.height = window.innerHeight;
+    console.log(sizes);
 
     // Update camera
     camera.aspect = sizes.width / sizes.height;
@@ -154,7 +155,7 @@ const loader = new GLTFLoader(manager);
 let model;
 loader.load(
     // resource URL
-    'threejs_assets/models/zavod_full_01.gltf',
+    'threejs_assets/models/zavod.gltf',
     // called when the resource is loaded
     function (gltf) {
 
@@ -209,22 +210,18 @@ loader.load(
         }
 
 
-        // let newChildren = [];
-        // for (let modelPart of model.children) {
-        //     if (modelPart.name.includes("Null")) {
-        //         newChildren.push(modelPart);
-        //     }
-        // }
-        // model.children = newChildren;
-        // console.log(model.children);
-        // for (let object of model.children) {
-        //     if (object.name === "Null_1") {
-        //         console.log(object);
-        //         for (let childNull of object.children) {
-        //             model.children[model.children.indexOf(object)].children[object.children.indexOf(childNull)].material.wireframe = true;
-        //         }
-        //     }
-        // }
+        let newChildren = [];
+        for (let modelPart of model.children) {
+            if (modelPart.name.includes("Cube")) {
+                if (modelPart.name === "Cube_6") {
+                    modelPart.children[0].material.roughness = 0.9;
+                }
+                newChildren.push(modelPart);
+            } else {
+                newChildren.push(modelPart);
+            }
+        }
+        model.children = newChildren;
         scene.add(model);
         console.log(model);
 
@@ -422,6 +419,7 @@ let popup = {};
 const objectsToIntersect = [aluTubesPage, aboutOwnerPage, laminateTubesPage, aboutHRPage, featuresPage, rAndDPage, qualityPage, ecologyPage, polyethyleneTubesPage, logisticsPage];
 
 function onMouseMove(event) {
+    // console.log(event.clientX, event.clientY);
     // calculate mouse position in normalized device coordinates
     // (-1 to +1) for both components
     prevPage = null;
@@ -514,9 +512,41 @@ function onMouseDown() {
     // console.log(prevMousePos);
 }
 
+function onCanvasTouch(event) {  
+    mouse.x = (event.changedTouches[0].clientX / window.screen.width) * 2 - 1;
+    mouse.y = -(event.changedTouches[0].clientY / window.screen.height) * 2 + 1;
+    // popup.x = event.changedTouches[0].clientX;
+    // popup.y = window.screen.height - event.changedTouches[0].clientY;
+    popup.x = 0;
+    popup.y = 0;
+    // console.log(mouse.x, mouse.y);
+}
+
+function onCanvasTouchMove(event) {   
+    prevPage = null;
+    mouse.x = -1000;
+    mouse.y = -1000;
+    popup.x = 0;
+    popup.y = 0;
+}
+
+
+function onCanvasTouchEnd(event) {   
+    // console.log(event.changedTouches[0].clientX, event.changedTouches[0].clientY);    
+    prevPage = null;
+    mouse.x = (event.changedTouches[0].clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.changedTouches[0].clientY / window.innerHeight) * 2 + 1;
+    popup.x = 0;
+    popup.y = 0;
+    // console.log(mouse.x, mouse.y);
+}
+
 window.addEventListener('mousemove', onMouseMove, false);
 window.addEventListener('pointerdown', onMouseDown, false);
 window.addEventListener('click', onMouseClick, false);
+window.addEventListener("touchstart", onCanvasTouch, false);
+// canvas.addEventListener("touchmove", onCanvasTouchMove, false);
+// canvas.addEventListener("touchend", onCanvasTouchEnd, false);
 
 
 export function blockCanvas() {
@@ -577,7 +607,7 @@ const tick = () => {
         raycaster.setFromCamera(mouse, camera);
 
         const intersects = raycaster.intersectObjects(objectsToIntersect);
-        // console.log(intersects);
+        // console.log(intersects, mouse);
 
 
         if (canvasBlocked === false) {

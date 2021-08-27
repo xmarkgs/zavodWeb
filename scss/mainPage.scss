@@ -1,0 +1,143 @@
+$text-black: #111111;
+
+main {
+    position: unset;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+header {
+    position: unset;
+}
+
+.website-creator {
+    margin: auto 0 45px 45px;
+    position: unset;
+}
+
+.lang-switch {
+    transition: 0s;
+
+    a {
+        padding: 15px 20px;
+        color: $text-black;
+        text-decoration: none;
+    }
+
+    &.active {
+        display: flex;
+        padding: 0;
+        background: #f1f1f1;
+
+        &:hover {
+            a {
+                color: white;
+            }
+        }
+
+    }
+}
+
+.website-creator {
+    color: $text-black;
+}
+
+.website-version {
+    margin-bottom: 45px;
+}
+
+.website-version__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.website-version__column {
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+
+    p {
+        margin-bottom: 42px;
+        font-weight: 300;
+        font-size: 14px;
+        color: $text-black;
+    }
+}
+
+.website-version__preview {
+    margin-bottom: 34px;
+    width: 100%;
+}
+
+.website-version__title {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+
+    span {
+        margin-left: 20px;
+        font-weight: bold;
+        font-size: 20px;
+        color: $text-black;
+    }
+}
+
+.version-select-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 22px 69px;
+    border: 1px solid $text-black;
+    transition: .1s;
+    color: $text-black;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: 10%;
+
+    img {
+        margin-left: 10px;
+    }
+
+    &:hover {
+        color: white;
+        background: $text-black;
+
+        img {
+            filter: invert(1);
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .website-version {
+        margin-top: 40px;
+        margin-bottom: 0;
+    }
+
+    .website-version__container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .website-version__column {
+        margin-bottom: 60px;
+        width: 95%;
+
+        .website-version__preview {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 18px;
+        }
+    }
+
+    .website-creator { 
+        margin: 0 auto 45px auto;
+    }
+}
+

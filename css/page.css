@@ -531,6 +531,10 @@ footer {
   text-decoration: underline;
 }
 
+.openPageMain {
+  cursor: pointer;
+}
+
 .footer__production-column .footer__menu__categories {
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
@@ -587,6 +591,43 @@ footer {
   font-size: 16px;
   text-transform: uppercase;
   color: #111111;
+}
+
+.watch-3d {
+  margin-right: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+}
+
+.watch-3d img {
+  width: 36px;
+  height: 36px;
+}
+
+.watch-3d span {
+  margin-left: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #111111;
+  text-transform: uppercase;
+}
+
+.header__logo_link {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+  .watch-3d {
+    margin-right: 20px;
+  }
+  .watch-3d span {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1196px) {

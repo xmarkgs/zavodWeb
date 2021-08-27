@@ -434,6 +434,10 @@ footer {
     }
 }
 
+.openPageMain {
+    cursor: pointer;
+}
+
 .footer__production-column {
 
     .footer__menu__categories {
@@ -490,6 +494,40 @@ footer {
         font-size: 16px;
         text-transform: uppercase;
         color: $text-black;
+    }
+}
+
+.watch-3d {
+    margin-right: 40px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    img {
+        width: 36px;
+        height: 36px;
+    }
+
+    span {
+        margin-left: 5px;
+        font-weight: bold;
+        font-size: 14px;
+        color: $text-black;
+        text-transform: uppercase;
+    }
+}
+
+.header__logo_link {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+    .watch-3d {
+        margin-right: 20px;
+
+        span {
+            display: none;
+        }
     }
 }
 

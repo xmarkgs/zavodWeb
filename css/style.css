@@ -422,6 +422,11 @@ header.on-page {
   top: 0;
 }
 
+.preloader img {
+  width: 160px;
+  height: 160px;
+}
+
 .preloader h1 {
   margin-top: 54px;
   font-size: 50px;
@@ -622,6 +627,12 @@ header.on-page {
   height: 62px;
   background-image: url("../img/popup_vector.svg");
   background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 767px) {
+  .navigationPopup:before {
+    display: none;
+  }
 }
 
 .pages-container {
