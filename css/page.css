@@ -68,7 +68,7 @@ section {
   content: "";
   pointer-events: none;
   position: absolute;
-  top: -100%;
+  top: -100vh;
   left: 0;
   display: block;
   width: calc(100% - 2px);
@@ -115,6 +115,11 @@ section {
 .page-preview__description p {
   max-width: 370px;
   margin-left: 40px;
+  font-weight: 300;
+}
+
+.page-preview__description strong {
+  font-weight: 500;
 }
 
 .page-quote {
@@ -531,6 +536,12 @@ footer {
   text-decoration: underline;
 }
 
+.footer__menu__categories .openPageMain a,
+.footer__menu__categories .openPageElement a {
+  color: #111111;
+  text-decoration: none;
+}
+
 .openPageMain {
   cursor: pointer;
 }
@@ -861,6 +872,13 @@ footer {
         -ms-flex-direction: column;
             flex-direction: column;
     row-gap: 8px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .page-preview__info {
+    width: 100%;
+    padding: 24px 18px;
   }
 }
 /*# sourceMappingURL=page.css.map */

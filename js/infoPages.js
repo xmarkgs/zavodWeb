@@ -13,15 +13,17 @@ document.addEventListener("DOMContentLoaded", function () {
     let menuCloseBtn = document.querySelectorAll('.menu-close');
     let menuContainer = document.querySelector('.menu-container');
     let afterLoaderAnimationContainer = document.querySelector('.animation-container');
-    let afterLoadedAnimation = document.querySelector('#animation-hint-2');
+    let afterLoadedAnimation = document.querySelectorAll('#animation-hint-2');
     let languageSwitcher = document.querySelectorAll('.language-switcher');
     let langSwitch = document.querySelectorAll('.lang-switch');
     let pagePreview = document.querySelectorAll('.page-preview');
 
     if (window.location.href.includes("lang=en")) {
         changeLanguage("en");
-    } else {
+    } else if (window.location.href.includes("lang=ru")){
         changeLanguage("ru");
+    } else {
+        changeLanguage("ua");
     }
 
     // Prevent canvas from work when on page
@@ -43,6 +45,16 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let navigationPopUp of document.querySelectorAll(".navigationPopup")) {
         navigationPopUp.addEventListener("mousemove", function (event) {
             event.stopPropagation();
+        });
+    }
+
+    // Open page on popup
+    for (let navigationPopUp of document.querySelectorAll(".navigationPopup")) {
+        navigationPopUp.addEventListener("touchstart", function (event) {
+            let pageToOpen = event.currentTarget.dataset.page;
+            blockCanvas();
+            document.querySelector(`.menu-container.${webSiteLanguage}-container`).classList.remove('active');
+            document.querySelector(`#${pageToOpen}`).classList.toggle("activePage");
         });
     }
 
@@ -138,50 +150,53 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Scroll to page content after scroll on page preview
     let pageScroll = false;
-    for (let page of document.querySelectorAll(".page-container")) {
-        page.addEventListener('scroll', (event) => {
-            if (event.target === page && event.target !== document.querySelector('#content-contactPage-ru') && event.target !== document.querySelector('#content-contactPage-en')) {
-                if (page.scrollTop >= window.innerHeight || page.scrollTop === 0) {
-                    pageScroll = false;
-                    page.classList.remove('no-scroll');
-                    for (let pageUnit of document.querySelectorAll(".page-unit")) {
-                        pageUnit.classList.remove('scrolling');
-                    }
-                }
-                if (pageScroll === false) {
-                    if (page.scrollTop <= window.innerHeight) {
-                        event.preventDefault();
-
-                        if (pageScroll === false) {
-                            if (page.scrollTop > 1 && page.scrollTop < window.innerHeight - 10) {
-                                page.scrollTop = pagePreview[0].offsetHeight + 2;
-                                page.classList.add('no-scroll');
-                                for (let pageUnit of document.querySelectorAll(".page-unit")) {
-                                    pageUnit.classList.add('scrolling');
-                                }
-                                pageScroll = true;
-
-                            }
-
-                            if (page.scrollTop > window.innerHeight - 10 && page.scrollTop < window.innerHeight) {
-                                page.scrollTop = 0;
-                                page.classList.add('no-scroll');
-                                for (let pageUnit of document.querySelectorAll(".page-unit")) {
-                                    pageUnit.classList.add('scrolling');
-                                }
-                                pageScroll = true;
-                            }
+    if (window.screen.width > 768) {
+        for (let page of document.querySelectorAll(".page-container")) {
+            page.addEventListener('scroll', (event) => {
+                if (event.target === page && event.target !== document.querySelector('#content-contactPage-ru') && event.target !== document.querySelector('#content-contactPage-en') && event.target !== document.querySelector('#content-contactPage-ua')) {
+                    if (page.scrollTop >= window.innerHeight || page.scrollTop === 0) {
+                        pageScroll = false;
+                        page.classList.remove('no-scroll');
+                        for (let pageUnit of document.querySelectorAll(".page-unit")) {
+                            pageUnit.classList.remove('scrolling');
                         }
                     }
-                } else {
-                    event.preventDefault();
+                    if (pageScroll === false) {
+                        if (page.scrollTop <= window.innerHeight) {
+                            event.preventDefault();
+    
+                            if (pageScroll === false) {
+                                if (page.scrollTop > 1 && page.scrollTop < window.innerHeight - 10) {
+                                    page.scrollTop = pagePreview[0].offsetHeight + 2;
+                                    page.classList.add('no-scroll');
+                                    for (let pageUnit of document.querySelectorAll(".page-unit")) {
+                                        pageUnit.classList.add('scrolling');
+                                    }
+                                    pageScroll = true;
+    
+                                }
+    
+                                if (page.scrollTop > window.innerHeight - 10 && page.scrollTop < window.innerHeight) {
+                                    page.scrollTop = 0;
+                                    page.classList.add('no-scroll');
+                                    for (let pageUnit of document.querySelectorAll(".page-unit")) {
+                                        pageUnit.classList.add('scrolling');
+                                    }
+                                    pageScroll = true;
+                                }
+                            }
+                        }
+                    } else {
+                        event.preventDefault();
+                    }
+    
+    
+    
                 }
-
-
-
-            }
-        });
+            });
+        }
     }
+    
 
 
     // Closing page when click on page preview empty area
@@ -194,13 +209,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Stopping animation after preloader
-    afterLoadedAnimation.addEventListener('animationend', () => {
-        afterLoaderAnimationContainer.classList.add("transparent");
-        setTimeout(() => {
-            afterLoaderAnimationContainer.classList.add('animation-end');
-            openCanvas();
-        }, 1000);
-    });
+    for (let object of afterLoadedAnimation) {
+        object.addEventListener('animationend', () => {
+            afterLoaderAnimationContainer.classList.add("transparent");
+            setTimeout(() => {
+                afterLoaderAnimationContainer.classList.add('animation-end');
+                openCanvas();
+            }, 1000);
+        });
+    }
 
     // Open menu
     for (let btn of menuBtn) {
@@ -244,7 +261,7 @@ function changeLanguage(lang) {
     // Close everything
     for (let popup of document.querySelectorAll(".navigationPopup")) {
         popup.classList.remove("activePopup");
-        popup.style.bottom = "-100px";
+        // popup.style.bottom = "-100px";
     }
     for (let page of document.querySelectorAll(".page-unit")) {
         page.classList.remove("activePage");
@@ -256,6 +273,9 @@ function changeLanguage(lang) {
         container.classList.add("unactiveContainer");
     }
     for (let container of document.querySelectorAll(".en-container")) {
+        container.classList.add("unactiveContainer");
+    }
+    for (let container of document.querySelectorAll(".ua-container")) {
         container.classList.add("unactiveContainer");
     }
     // Show new language containers
@@ -270,8 +290,8 @@ function changeLanguage(lang) {
 const showNavigationPopup = (page, x, y) => {
     for (let popup of document.querySelectorAll(".navigationPopup")) {
         popup.classList.remove("activePopup");
-        popup.style.left = `${window.innerWidth/2}px`;
-        popup.style.bottom = `-100px`;
+        popup.style.left = `${8000}px`;
+        // popup.style.bottom = `-100px`;
     }
     for (let popup of document.querySelectorAll(".navigationPopup")) {
         if (popup.dataset.page === page) {

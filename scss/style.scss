@@ -123,6 +123,10 @@ header {
             background: #427c36;
         }
     }
+
+    &:not(:first-of-type) {
+        top: calc(120% + 47px);
+    }
 }
 
 .menu-btn {
@@ -226,6 +230,11 @@ header {
     &:not(:nth-child(1)) {
         margin-top: 40px;
     }
+
+    a {
+        color: $text-black;
+        text-decoration: none;
+    }
 }
 
 .menu-close {
@@ -268,19 +277,13 @@ header {
 }
 
 // Languages
-.ru-container {
+.en-container, .ua-container, .ru-container {
 
     &.unactiveContainer {
         display: none !important;
     }
 }
 
-.en-container {
-
-    &.unactiveContainer {
-        display: none !important;
-    }
-}
 
 .hidden {
     display: none !important;

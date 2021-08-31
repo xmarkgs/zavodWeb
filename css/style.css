@@ -141,6 +141,10 @@ header.on-page {
   background: #427c36;
 }
 
+.lang-switch:not(:first-of-type) {
+  top: calc(120% + 47px);
+}
+
 .menu-btn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -272,6 +276,11 @@ header.on-page {
   margin-top: 40px;
 }
 
+.menu-point a {
+  color: #111111;
+  text-decoration: none;
+}
+
 .menu-close {
   cursor: pointer;
 }
@@ -320,11 +329,7 @@ header.on-page {
           transform: rotateX(180deg);
 }
 
-.ru-container.unactiveContainer {
-  display: none !important;
-}
-
-.en-container.unactiveContainer {
+.en-container.unactiveContainer, .ua-container.unactiveContainer, .ru-container.unactiveContainer {
   display: none !important;
 }
 

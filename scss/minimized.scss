@@ -162,7 +162,7 @@ main {
     .contact-btn {
         position: unset;
         justify-content: center;
-        margin-bottom: 24px;
+        width: fit-content;
 
         p {
             display: inline;
@@ -196,5 +196,13 @@ main {
 }
 
 main.infopage {
+    user-select: text;
     overflow-y: auto;
+}
+
+.contact-minimized-link {
+    margin: 24px auto;
+    width: fit-content;
+    color: $text-black;
+    text-decoration: none;
 }

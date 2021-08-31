@@ -164,4 +164,11 @@ header {
     margin: 0 auto 45px auto;
   }
 }
+
+main.infopage {
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
+}
 /*# sourceMappingURL=mainPage.css.map */

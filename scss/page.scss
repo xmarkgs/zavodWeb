@@ -62,7 +62,7 @@ section {
         content: "";
         pointer-events: none;
         position: absolute;
-        top: -100%;
+        top: -100vh;
         left: 0;
         display: block;
         width: calc(100% - 2px);
@@ -104,6 +104,11 @@ section {
     p {
         max-width: 370px;
         margin-left: 40px;
+        font-weight: 300;
+    }
+
+    strong {
+        font-weight: 500;
     }
 }
 
@@ -431,6 +436,11 @@ footer {
         &:hover {
             text-decoration: underline;
         }
+
+        a {
+            color: $text-black;
+            text-decoration: none;
+        }
     }
 }
 
@@ -634,6 +644,7 @@ footer {
 }
 
 @media screen and (max-width: 767px) {
+    
     .navigationPopup {
         padding: 12px 18px;
 
@@ -807,5 +818,12 @@ footer {
     .footer__bottom {
         flex-direction: column;
         row-gap: 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .page-preview__info {
+        width: 100%;
+        padding: 24px 18px;
     }
 }
