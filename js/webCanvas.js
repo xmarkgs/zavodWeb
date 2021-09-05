@@ -31,6 +31,8 @@ manager.onStart = function (url, itemsLoaded, itemsTotal) {
 
 manager.onLoad = function () {
     console.log('Loading complete!');
+    document.getElementsByClassName('preloader')[0].classList.remove("blank");
+    document.getElementsByClassName('preloader')[0].classList.add("loaded");
     document.getElementsByClassName('preloader')[0].classList.toggle("loading");
     document.querySelector('.animation-container').classList.add('animated');
     blockCanvas();
@@ -523,7 +525,6 @@ function onCanvasTouch(event) {
 }
 
 function onCanvasTouchMove(event) {   
-    prevPage = null;
     mouse.x = -1000;
     mouse.y = -1000;
     popup.x = 0;
@@ -545,7 +546,7 @@ window.addEventListener('mousemove', onMouseMove, false);
 window.addEventListener('pointerdown', onMouseDown, false);
 window.addEventListener('click', onMouseClick, false);
 window.addEventListener("touchstart", onCanvasTouch, false);
-// canvas.addEventListener("touchmove", onCanvasTouchMove, false);
+canvas.addEventListener("touchmove", onCanvasTouchMove, false);
 // canvas.addEventListener("touchend", onCanvasTouchEnd, false);
 
 
@@ -622,14 +623,14 @@ const tick = () => {
                             mouseOverNavigation = true;
                             changingOpacity = false;
                             // changeOpacity(aluTubesPage, 0.3, "up");
-                            // aluTubesPage.material.opacity = 0.3;
+                            aluTubesPage.material.opacity = 0.2;
                             showNavigationPopup(`aluTubesPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
                         case 'aboutOwnerPage':
                             currentPage = `aboutOwnerPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
-                            // aboutOwnerPage.material.opacity = 0.3;
+                            aboutOwnerPage.material.opacity = 0.2;
                             // changeOpacity(aboutOwnerPage, 0.3, "up");
                             showNavigationPopup(`aboutOwnerPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
@@ -637,7 +638,7 @@ const tick = () => {
                             currentPage = `laminateTubesPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
-                            // laminateTubesPage.material.opacity = 0.3;
+                            laminateTubesPage.material.opacity = 0.2;
                             // changeOpacity(laminateTubesPage, 0.3, "up");
                             showNavigationPopup(`laminateTubesPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
@@ -645,7 +646,7 @@ const tick = () => {
                             currentPage = `aboutHRPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
-                            // aboutHRPage.material.opacity = 0.3;
+                            aboutHRPage.material.opacity = 0.2;
                             // changeOpacity(aboutHRPage, 0.3, "up");
                             showNavigationPopup(`aboutHRPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
@@ -653,7 +654,7 @@ const tick = () => {
                             currentPage = `featuresPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
-                            // featuresPage.material.opacity = 0.3;
+                            featuresPage.material.opacity = 0.2;
                             // changeOpacity(featuresPage, 0.3, "up");
                             showNavigationPopup(`featuresPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
@@ -661,7 +662,7 @@ const tick = () => {
                             currentPage = `rAndDPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
-                            // rAndDPage.material.opacity = 0.3;
+                            rAndDPage.material.opacity = 0.2;
                             // changeOpacity(rAndDPage, 0.3, "up");
                             showNavigationPopup(`rAndDPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
@@ -669,7 +670,7 @@ const tick = () => {
                             currentPage = `qualityPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
-                            // qualityPage.material.opacity = 0.3;
+                            qualityPage.material.opacity = 0.2;
                             // changeOpacity(qualityPage, 0.3, "up");
                             showNavigationPopup(`qualityPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
@@ -677,7 +678,7 @@ const tick = () => {
                             currentPage = `ecologyPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
-                            // ecologyPage.material.opacity = 0.3;
+                            ecologyPage.material.opacity = 0.2;
                             // changeOpacity(ecologyPage, 0.3, "up");
                             showNavigationPopup(`ecologyPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
@@ -685,7 +686,7 @@ const tick = () => {
                             currentPage = `polyethyleneTubesPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
-                            // polyethyleneTubesPage.material.opacity = 0.3;
+                            polyethyleneTubesPage.material.opacity = 0.2;
                             // changeOpacity(polyethyleneTubesPage, 0.3, "up");
                             showNavigationPopup(`polyethyleneTubesPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
@@ -693,7 +694,7 @@ const tick = () => {
                             currentPage = `logisticsPage-${canvasLanguage}`;
                             mouseOverNavigation = true;
                             changingOpacity = false;
-                            // logisticsPage.material.opacity = 0.3;
+                            logisticsPage.material.opacity = 0.2;
                             // changeOpacity(logisticsPage, 0.3, "up");
                             showNavigationPopup(`logisticsPage-${canvasLanguage}`, popup.x, popup.y);
                             break;
@@ -723,7 +724,7 @@ const tick = () => {
                 };
                 for (let popup of document.querySelectorAll(".navigationPopup")) {
                     popup.classList.remove("activePopup");
-                    popup.style.bottom = "-100px";
+                    popup.style.bottom = "-5000px";
                 }
             }
         } else {
@@ -743,7 +744,7 @@ const tick = () => {
             };
             for (let popup of document.querySelectorAll(".navigationPopup")) {
                 popup.classList.remove("activePopup");
-                popup.style.bottom = "-100px";
+                popup.style.bottom = "-5000px";
             }
         }
 

@@ -92,9 +92,20 @@ main {
 }
 
 .animation-container {
-  background: url("../img/backgrounds/minimized/background_loader.png");
+  background: url("../img/backgrounds/minimized/background_loader.jpg");
   background-size: cover;
   background-position: center;
+}
+
+#animation-hint-1 {
+  -webkit-animation: animation-container;
+          animation: animation-container;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 
 .page-info {
@@ -243,5 +254,11 @@ main.infopage {
   width: fit-content;
   color: #111111;
   text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+  .page-info_contactPage {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=minimized.css.map */

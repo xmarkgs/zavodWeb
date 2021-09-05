@@ -80,9 +80,16 @@ main {
 }
 
 .animation-container {
-    background: url('../img/backgrounds/minimized/background_loader.png');
+    background: url('../img/backgrounds/minimized/background_loader.jpg');
     background-size: cover;
     background-position: center;
+}
+
+#animation-hint-1 {
+    animation: animation-container;
+    animation-fill-mode: forwards;
+    animation-duration: 3s;
+    animation-delay: 2s;
 }
 
 .page-info {
@@ -205,4 +212,10 @@ main.infopage {
     width: fit-content;
     color: $text-black;
     text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+    .page-info_contactPage {
+        width: 100%;
+    }
 }

@@ -873,6 +873,12 @@ footer {
             flex-direction: column;
     row-gap: 8px;
   }
+  .navigationPopup {
+    height: 160px !important;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 
 @media screen and (max-width: 480px) {

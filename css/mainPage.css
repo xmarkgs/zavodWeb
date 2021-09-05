@@ -78,6 +78,10 @@ header {
   color: #111111;
 }
 
+.website-version__column strong {
+  font-weight: 400;
+}
+
 .website-version__preview {
   margin-bottom: 34px;
   width: 100%;

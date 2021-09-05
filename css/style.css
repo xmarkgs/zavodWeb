@@ -421,10 +421,17 @@ header.on-page {
   height: 100%;
   background: white;
   z-index: 100;
+  -webkit-box-shadow: 5px 5px 0px 10000px #FFFFFF;
+          box-shadow: 5px 5px 0px 10000px #FFFFFF;
 }
 
 .preloader.loading {
   top: 0;
+}
+
+.preloader.loaded {
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
 }
 
 .preloader img {
@@ -521,6 +528,17 @@ header.on-page {
           animation-delay: 2s;
 }
 
+.animation-container.animated #animation-hint-3 {
+  -webkit-animation: animation-container;
+          animation: animation-container;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-delay: 4.5s;
+          animation-delay: 4.5s;
+}
+
 .animation-container.animated #animation-hint-2 {
   -webkit-animation: animation-container;
           animation: animation-container;
@@ -528,8 +546,8 @@ header.on-page {
           animation-fill-mode: forwards;
   -webkit-animation-duration: 5s;
           animation-duration: 5s;
-  -webkit-animation-delay: 5s;
-          animation-delay: 5s;
+  -webkit-animation-delay: 8s;
+          animation-delay: 8s;
 }
 
 .animation-container.transparent {
@@ -610,6 +628,7 @@ header.on-page {
 .navigationPopup h3 {
   font-size: 30px;
   margin-right: 20px;
+  max-height: 36px !important;
 }
 
 .navigationPopup span {
@@ -620,7 +639,6 @@ header.on-page {
 
 .navigationPopup.activePopup {
   opacity: 1;
-  bottom: 48px;
 }
 
 .navigationPopup:before {

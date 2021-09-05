@@ -298,6 +298,10 @@ const showNavigationPopup = (page, x, y) => {
             if (window.screen.width < 768) {
                 popup.style.left = `5px`;
                 popup.style.bottom = `72px`;
+                for (let heading of document.querySelectorAll(".navigationPopup h3")) {
+                    heading.style.marginBottom = "0";
+                    heading.style.paddingBottom = "0";
+                }
             } else {
                 popup.style.left = `${x+popup.offsetWidth*0.2}px`;
                 popup.style.bottom = `${y+62}px`;

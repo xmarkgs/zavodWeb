@@ -359,9 +359,14 @@ header {
     height: 100%;
     background: white;
     z-index: 100;
+    box-shadow: 5px 5px 0px 10000px #FFFFFF;
 
     &.loading {
         top: 0;
+    }
+
+    &.loaded {
+        box-shadow: unset;
     }
 
     img {
@@ -441,11 +446,18 @@ header {
             animation-delay: 2s;
         }
 
+        #animation-hint-3 {
+            animation: animation-container;
+            animation-fill-mode: forwards;
+            animation-duration: 5s;
+            animation-delay: 4.5s;
+        }
+
         #animation-hint-2 {
             animation: animation-container;
             animation-fill-mode: forwards;
             animation-duration: 5s;
-            animation-delay: 5s;
+            animation-delay: 8s;
         }
     }
 
@@ -508,6 +520,7 @@ header {
     h3 {
         font-size: 30px;
         margin-right: 20px;
+        max-height: 36px !important;
     }
 
     span {
@@ -518,7 +531,6 @@ header {
 
     &.activePopup {
         opacity: 1;
-        bottom: 48px;
     }
 
     &:before {

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тубний завод | Тубный завод |Tube plant</title>
+    <title>Тубний завод | Тубный завод | Tube plant</title>
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/page.css">
@@ -15,7 +15,7 @@
 
 <body>
     <!-- Preloader -->
-    <div class="preloader">
+    <div class="preloader blank">
         <img src="img/logo.svg" alt="">
         <h1>
             <div class="ru-container">Добро пожаловать на тубный завод!</div>
@@ -54,6 +54,18 @@
             <img src="img/pointers/scroll_pointer.svg" alt="">
             <p>scroll to zoom in</p>
         </div>
+        <div class="animation-hint ru-container" id="animation-hint-3">
+            <img src="img/icons/home.svg" alt="">
+            <p>Нажмите на здание, чтобы узнать больше</p>
+        </div>
+        <div class="animation-hint ua-container" id="animation-hint-3">
+            <img src="img/icons/home.svg" alt="">
+            <p>Натисни на будівлю, щоб дізнатися більше</p>
+        </div>
+        <div class="animation-hint en-container" id="animation-hint-3">
+            <img src="img/icons/home.svg" alt="">
+            <p>Click on the building to read more</p>
+        </div>
         <div class="animation-hint ru-container" id="animation-hint-2">
             <img src="img/pointers/finger_pointer.svg" alt="">
             <p>удерживай, чтобы вращать</p>
@@ -71,7 +83,7 @@
     <!-- Menu -->
     <div class="menu-container ru-container">
         <div class="menu-header">
-            <div class="header__logo">
+            <div class="header__logo openPageMain">
                 <img src="img/logo.svg" alt="">
                 <p>тубный завод</p>
             </div>
@@ -84,9 +96,9 @@
             <div class="menu-point openSubMenuElement" data-submenu="production-submenu-ru">продукция<img
                     src="img/arrows/bottom_arrow_small.svg" alt=""></div>
             <div class="menu-point menu-sub production-submenu-ru">
-                <div class="menu-point openPageElement" data-page="aluTubesPage-ru">Alutubes</div>
-                <div class="menu-point openPageElement" data-page="laminateTubesPage-ru">Laminate</div>
-                <div class="menu-point openPageElement" data-page="polyethyleneTubesPage-ru">PolyethyleneTubes</div>
+                <div class="menu-point openPageElement" data-page="aluTubesPage-ru">Алюминиевые тубы</div>
+                <div class="menu-point openPageElement" data-page="laminateTubesPage-ru">Ламинатные тубы</div>
+                <div class="menu-point openPageElement" data-page="polyethyleneTubesPage-ru">Полиетиленовые тубы</div>
             </div>
             <div class="menu-point openPageElement" data-page="aboutOwnerPage-ru">кабинет директора</div>
             <div class="menu-point openPageElement" data-page="aboutHRPage-ru">про персонал</div>
@@ -100,7 +112,7 @@
     </div>
     <div class="menu-container en-container">
         <div class="menu-header">
-            <div class="header__logo">
+            <div class="header__logo openPageMain">
                 <img src="img/logo.svg" alt="">
                 <p>tube plant</p>
             </div>
@@ -129,7 +141,7 @@
     </div>
     <div class="menu-container ua-container">
         <div class="menu-header">
-            <div class="header__logo">
+            <div class="header__logo openPageMain">
                 <img src="img/logo.svg" alt="">
                 <p>тубний завод</p>
             </div>
@@ -160,12 +172,10 @@
     <!-- Three.js -->
     <main>
         <header class="ru-container">
-            <a href="/" class="header__logo_link">
-                <div class="header__logo">
-                    <img src="img/logo.svg" alt="">
-                    <p>тубный завод</p>
-                </div>
-            </a>
+            <div class="header__logo openPageMain">
+                <img src="img/logo.svg" alt="">
+                <p>тубный завод</p>
+            </div>
             <div class="header__navigation">
                 <div class="language-switcher">
                     <p>RU</p>
@@ -192,12 +202,10 @@
             </div>
         </header>
         <header class="ua-container">
-            <a href="indexUa.html" class="header__logo_link">
-                <div class="header__logo">
-                    <img src="img/logo.svg" alt="">
-                    <p>тубний завод</p>
-                </div>
-            </a>
+            <div class="header__logo openPageMain">
+                <img src="img/logo.svg" alt="">
+                <p>тубний завод</p>
+            </div>
             <div class="header__navigation">
                 <div class="language-switcher">
                     <p>UA</p>
@@ -224,12 +232,10 @@
             </div>
         </header>
         <header class="en-container">
-            <a href="indexEng.html" class="header__logo_link">
-                <div class="header__logo">
-                    <img src="img/logo.svg" alt="">
-                    <p>tube plant</p>
-                </div>
-            </a>
+            <div class="header__logo openPageMain">
+                <img src="img/logo.svg" alt="">
+                <p>tube plant</p>
+            </div>
             <div class="header__navigation">
                 <div class="language-switcher">
                     <p>EN</p>
@@ -285,7 +291,7 @@
         <!-- <span class="openPageSpan" data-page="aboutOwnerPage">Открыть страницу</span> -->
     </div>
     <div class="navigationPopup" data-page="laminateTubesPage-ru">
-        <h3>Ламинатные трубы</h3>
+        <h3>Ламинатные тубы</h3>
         <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="laminateTubesPage">Открыть страницу</span> -->
     </div>
@@ -315,7 +321,7 @@
         <!-- <span class="openPageSpan" data-page="ecologyPage">Открыть страницу</span> -->
     </div>
     <div class="navigationPopup" data-page="polyethyleneTubesPage-ru">
-        <h3>Полиетиленовые трубы</h3>
+        <h3>Полиетиленовые тубы</h3>
         <img src="img/arrows/arrow_right.svg" alt="">
         <!-- <span class="openPageSpan" data-page="polyethyleneTubesPage">Открыть страницу</span> -->
     </div>

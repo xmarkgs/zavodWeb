@@ -64,6 +64,10 @@ header {
         font-size: 14px;
         color: $text-black;
     }
+
+    strong {
+        font-weight: 400;
+    }
 }
 
 .website-version__preview {
